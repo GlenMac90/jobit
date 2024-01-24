@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .bold-32 {
+    @apply text-[32px] font-bold leading-[40px];
+  }
+
+  .bold-24 {
+    @apply text-[24px] font-bold leading-[32px];
+  }
+
+  .semibold-24 {
+    @apply text-[24px] font-semibold leading-[32px];
+  }
+
+  .bold-22 {
+    @apply text-[22px] font-bold leading-[32px];
+  }
+
+  .semibold-22 {
+    @apply text-[22px] font-semibold leading-[32px];
+  }
+
+  .bold-18 {
+    @apply text-[18px] font-bold leading-[24px];
+  }
+
+  .semibold-18 {
+    @apply text-[18px] font-semibold leading-[24px];
+  }
+
+  .medium-18 {
+    @apply text-[18px] font-medium leading-[24px];
+  }
+
+  .regular-18 {
+    @apply text-[18px] font-normal leading-[24px];
+  }
+
+  .bold-16 {
+    @apply text-[16px] font-bold leading-[24px];
+  }
+
+  .semibold-16 {
+    @apply text-[16px] font-semibold leading-[24px];
+  }
+
+  .medium-16 {
+    @apply text-[16px] font-medium leading-[24px];
+  }
+
+  .regular-16 {
+    @apply text-[16px] font-normal leading-[24px];
+  }
+
+  .bold-15 {
+    @apply text-[15px] font-bold leading-[24px];
+  }
+
+  .semibold-15 {
+    @apply text-[15px] font-semibold leading-[24px];
+  }
+
+  .medium-15 {
+    @apply text-[15px] font-medium leading-[24px];
+  }
+
+  .regular-15 {
+    @apply text-[15px] font-normal leading-[24px];
+  }
+
+  .bold-14 {
+    @apply text-[14px] font-bold leading-[24px];
+  }
+
+  .semibold-14 {
+    @apply text-[14px] font-semibold leading-[24px];
+  }
+
+  .medium-14 {
+    @apply text-[14px] font-medium leading-[24px];
+  }
+
+  .regular-14 {
+    @apply text-[14px] font-normal leading-[24px];
+  }
+
+  .bold-13 {
+    @apply text-[13px] font-bold leading-[24px];
+  }
+
+  .semibold-13 {
+    @apply text-[13px] font-semibold leading-[24px];
+  }
+
+  .medium-13 {
+    @apply text-[13px] font-medium leading-[24px];
+  }
+
+  .regular-13 {
+    @apply text-[13px] font-normal leading-[24px];
+  }
+
+  .bg-natural-3_darkBG-1 {
+    @apply bg-natural-3 dark:bg-darkBG-1;
+  }
+
+  .bg-white_darkBG-1 {
+    @apply bg-white dark:bg-darkBG-1;
+  }
+
+  .bg-white_darkBG-2 {
+    @apply bg-white dark:bg-darkBG-2;
+  }
+
+  .bg-natural-3_darkBG-3 {
+    @apply bg-natural-3 dark:bg-darkBG-3;
+  }
+
+  .text-black_white {
+    @apply text-black dark:text-white;
+  }
+
+  .text-natural-7_natural-5 {
+    @apply text-natural-7 dark:text-natural-5;
+  }
+}
