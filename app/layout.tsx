@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
 
+import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/context/ThemeProvider";
 
 const manrope = Manrope({ subsets: ["latin"] });
@@ -22,7 +23,10 @@ export default function RootLayout({
       <body
         className={`${manrope.className} bg-natural-3_darkBG-1 overscroll-none`}
       >
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <Navbar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
