@@ -19,7 +19,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${manrope.className} bg-natural-3_darkBG-1`}>
+      <body
+        className={`${manrope.className} bg-natural-3_darkBG-1 overscroll-none`}
+      >
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
