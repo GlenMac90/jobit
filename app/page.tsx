@@ -27,7 +27,6 @@ export default function Home() {
         </div>
         <div className="flex w-full gap-5">
           <JobPost />
-          <JobPost />
         </div>
       </main>
     </div>

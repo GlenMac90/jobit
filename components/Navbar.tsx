@@ -80,7 +80,7 @@ const Navbar = () => {
       </nav>
       {isMobileMenuOpen && (
         <div
-          className="fixed h-screen w-full bg-black/50 dark:bg-white/50"
+          className="fixed h-screen w-full bg-black/50 dark:bg-white/10"
           onClick={() => setIsMobileMenuOpen(false)}
         >
           <MobileNavBar setIsMobileMenuOpen={setIsMobileMenuOpen} />
