@@ -10,20 +10,28 @@ type FormFields = {
 };
 
 const SearchBar = () => {
-  const { register, handleSubmit } = useForm<FormFields>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<FormFields>();
 
-  const onSubmit: SubmitHandler<FormFields> = (data) => {
+  const onSubmit: SubmitHandler<FormFields> = async (data) => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     console.log(data);
   };
 
   const inputDivStyles =
-    "flex h-[3.3rem] w-full gap-3 border-b border-b-natural-2 dark:border-b-natural-8 lg:ml-2.5 lg:size-full lg:border-b-0 lg:px-0";
+    "flex h-[3.3rem] w-full gap-3 border-b border-b-natural-2 dark:border-b-natural-8 lg:ml-2.5 lg:size-full lg:border-b-0 lg:px-0 relative";
 
   const inputTagStyles =
     "bg-white_darkBG-2 flex w-full text-natural-6 outline-none";
 
   const firstTwoInputStyles =
     "border-r-natural-2 px-5 dark:border-r-natural-8 lg:border-r";
+
+  const errorMessageStyles =
+    "lg:absolute lg:flex hidden lg:top-20 text-red-500";
 
   return (
     <form
@@ -36,18 +44,28 @@ const SearchBar = () => {
           height={28}
           width={28}
           alt="search icon for job title field"
+          className="shrink-0"
         />
         <input
           {...register("jobTitle", {
-            required: true,
-            maxLength: 20,
-            minLength: 5,
+            required: "Please enter a job title",
+            maxLength: {
+              value: 20,
+              message: "Job title should be less than 20 characters",
+            },
+            minLength: {
+              value: 5,
+              message: "Job title should be more than 5 characters",
+            },
             pattern: /^[A-Za-z]+$/i,
           })}
           type="text"
           placeholder="Job Title, Company or Keywords"
           className={inputTagStyles}
         />
+        {errors.jobTitle && (
+          <span className={errorMessageStyles}>{errors.jobTitle.message}</span>
+        )}
       </div>
       <div className={`${inputDivStyles} ${firstTwoInputStyles}`}>
         <Image
@@ -55,13 +73,29 @@ const SearchBar = () => {
           height={28}
           width={28}
           alt="search icon for job location field"
+          className="shrink-0"
         />
         <input
-          {...register("location")}
+          {...register("location", {
+            required: "Please enter a location",
+            maxLength: {
+              value: 20,
+              message: "Location should be less than 20 characters",
+            },
+            minLength: {
+              value: 5,
+              message: "Location should be more than 5 characters",
+            },
+            pattern: /^[A-Za-z]+$/i,
+          })}
           type="text"
           placeholder="Select Location"
           className={inputTagStyles}
         />
+
+        {errors.location && (
+          <span className={errorMessageStyles}>{errors.location.message}</span>
+        )}
       </div>
       <div className={`${inputDivStyles} px-5`}>
         <Image
@@ -69,17 +103,41 @@ const SearchBar = () => {
           height={28}
           width={28}
           alt="search icon for job type type"
+          className="shrink-0"
         />
         <input
-          {...register("jobType")}
+          {...register("jobType", {
+            required: "Please enter a job type",
+            maxLength: {
+              value: 20,
+              message: "Job type should be less than 20 characters",
+            },
+            minLength: {
+              value: 5,
+              message: "Job type should be more than 5 characters",
+            },
+            pattern: /^[A-Za-z]+$/i,
+          })}
           type="text"
           placeholder="Job Type"
           className={inputTagStyles}
         />
+        {errors.jobType && (
+          <span className={errorMessageStyles}>{errors.jobType.message}</span>
+        )}
       </div>
-      <button className="flex-center mt-5 h-12 w-full shrink-0 rounded-[10px] bg-primary text-white lg:ml-4 lg:mt-0 lg:w-28">
-        Find Jobs
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className="flex-center mt-5 h-12 w-full shrink-0 rounded-[10px] bg-primary text-white lg:ml-4 lg:mt-0 lg:w-28"
+      >
+        {isSubmitting ? "Searching..." : "Find Jobs"}
       </button>
+      {errors && (
+        <span className="mt-2 self-start text-red-500 lg:hidden">
+          Please fill in all the fields
+        </span>
+      )}
     </form>
   );
 };
