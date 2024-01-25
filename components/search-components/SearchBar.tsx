@@ -13,12 +13,19 @@ const SearchBar = () => {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors, isSubmitting },
   } = useForm<FormFields>();
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log(data);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      throw new Error("Something went wrong");
+    } catch (error) {
+      setError("root", {
+        message: "This is invalid",
+      });
+    }
   };
 
   const inputDivStyles =
@@ -136,6 +143,11 @@ const SearchBar = () => {
       {errors && (
         <span className="mt-2 self-start text-red-500 lg:hidden">
           Please fill in all the fields
+        </span>
+      )}
+      {errors.root && (
+        <span className="mt-2 self-start text-red-500 lg:absolute lg:translate-y-[4.5rem]">
+          {errors.root.message}
         </span>
       )}
     </form>
