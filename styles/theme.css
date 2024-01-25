@@ -27,6 +27,10 @@
     @apply text-[22px] font-semibold leading-[32px];
   }
 
+  .regular-20 {
+    @apply text-[20px] font-normal leading-[28px];
+  }
+
   .bold-18 {
     @apply text-[18px] font-bold leading-[24px];
   }
@@ -91,6 +95,10 @@
     @apply text-[14px] font-normal leading-[24px];
   }
 
+  .light-14 {
+    @apply text-[14px] font-light leading-[24px];
+  }
+
   .bold-13 {
     @apply text-[13px] font-bold leading-[24px];
   }
@@ -105,6 +113,10 @@
 
   .regular-13 {
     @apply text-[13px] font-normal leading-[24px];
+  }
+
+  .light-13 {
+    @apply text-[13px] font-light leading-[24px];
   }
 
   .bg-natural-3_darkBG-1 {

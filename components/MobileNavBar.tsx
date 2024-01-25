@@ -39,7 +39,9 @@ const MobileNavBar = ({
             );
           })}
         </div>
-        <ThemeSwitcher />
+        <div className="ml-4 flex">
+          <ThemeSwitcher />
+        </div>
       </div>
     </aside>
   );
