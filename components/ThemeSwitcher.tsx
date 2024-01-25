@@ -3,7 +3,6 @@
 import Image from "next/image";
 
 import { useTheme } from "@/context/ThemeProvider";
-import { sun, moon } from "@/public";
 
 const ThemeSwitcher = () => {
   const { mode, setMode } = useTheme();
@@ -23,7 +22,7 @@ const ThemeSwitcher = () => {
   return (
     <div className="flex items-center gap-3">
       <Image
-        src={sun}
+        src="/sun.svg"
         height={24}
         width={24}
         alt="Image of the sun, representing the light mode setting of the application"
@@ -37,7 +36,7 @@ const ThemeSwitcher = () => {
         />
       </button>
       <Image
-        src={moon}
+        src="/moon.svg"
         height={24}
         width={24}
         alt="Image of the moon, representing the dark mode setting of the application"

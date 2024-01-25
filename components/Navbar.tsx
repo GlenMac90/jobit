@@ -9,7 +9,6 @@ import { IoMdClose } from "react-icons/io";
 import JobItLogo from "./JobItLogo";
 import { navBarLinks } from "@/constants";
 import ThemeSwitcher from "./ThemeSwitcher";
-import { menuButton } from "@/public";
 import MobileNavBar from "./MobileNavBar";
 
 const Navbar = () => {
@@ -58,7 +57,7 @@ const Navbar = () => {
               onClick={() => setIsMobileMenuOpen(true)}
             >
               <Image
-                src={menuButton}
+                src="/menu-button.svg"
                 height={24}
                 width={24}
                 alt="Button to open the mobile navigation bar"
@@ -80,7 +79,7 @@ const Navbar = () => {
       </nav>
       {isMobileMenuOpen && (
         <div
-          className="fixed h-screen w-full bg-black/50 dark:bg-white/50"
+          className="fixed h-screen w-full bg-black/50 dark:bg-white/10"
           onClick={() => setIsMobileMenuOpen(false)}
         >
           <MobileNavBar setIsMobileMenuOpen={setIsMobileMenuOpen} />
