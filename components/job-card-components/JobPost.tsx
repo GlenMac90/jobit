@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import { dummyJobData } from "@/utils/dummy-data";
 import { daysLeftUntil, formatSalary } from "@/utils";
+import FormattedText from "../FormattedText";
 
 const JobPost = () => {
   const {
@@ -18,13 +19,12 @@ const JobPost = () => {
   } = dummyJobData;
 
   const formattedDate = daysLeftUntil(dateOfDeadline);
-  const jobSalary = formatSalary({
+  const { duration, salary } = formatSalary({
     minimumSalary,
     maximumSalary,
     salaryType,
   });
 
-  const { duration, salary } = jobSalary;
   return (
     <div className="card-styles gap-5 p-5 md:gap-6">
       <div className="flex gap-5">
@@ -83,10 +83,7 @@ const JobPost = () => {
         </div>
       </div>
       <div className="flex w-full items-center justify-between">
-        <p className="text-black_white regular-16 md:regular-18">
-          {salary}
-          <span className="text-natural-7">/{duration}</span>
-        </p>
+        <FormattedText leftText={salary} rightText={`/${duration}`} />
         <button className="medium-15 rounded-[10px] bg-primary px-3.5 py-2 text-white md:py-3">
           Visit Now
         </button>

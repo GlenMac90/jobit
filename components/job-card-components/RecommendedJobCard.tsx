@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { dummyRecommendedCompany } from "@/utils/dummy-data";
+import Dot from "../Dot";
 
 const RecommendedJobCard = () => {
   const {
@@ -30,7 +31,7 @@ const RecommendedJobCard = () => {
           </span>
           <div className="regular-13 sm:regular-14 flex gap-1 truncate text-natural-6">
             <span>{companyName}</span>
-            <div className="size-[3px] self-center rounded-full bg-natural-6" />
+            <Dot />
             <span>
               {city}, {country}
             </span>
