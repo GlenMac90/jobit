@@ -154,4 +154,12 @@
   .text-natural-7_natural-5 {
     @apply text-natural-7 dark:text-natural-5;
   }
+
+  .card-styles {
+    @apply bg-white_darkBG-2 flex w-full flex-col rounded-[10px] shadow;
+  }
+
+  .badge-styles {
+    @apply light-13 md:light-14 bg-natural-3_darkBG-3 rounded-md px-2.5 py-0.5 text-natural-6;
+  }
 }

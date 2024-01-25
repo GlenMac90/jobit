@@ -11,3 +11,22 @@ export const dummyJobData = {
   dateOfDeadline: new Date(2021, 10, 10),
   techTags: ["react", "PHP", "Java", "Python"],
 };
+
+export const dummyFeaturedCompany = {
+  companyName: "Microsoft",
+  image: "/microsoft.svg",
+  city: "Seattle",
+  country: "USA",
+  vacancies: 15,
+};
+
+export const dummyRecommendedCompany = {
+  jobTitle: "Software Engineer",
+  image: "/microsoft.svg",
+  companyName: "Microsoft",
+  city: "Seattle",
+  country: "USA",
+  jobType: "Full Time",
+  maxHourlySalary: 100,
+  minHourlySalary: 50,
+};

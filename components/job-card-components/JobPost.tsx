@@ -26,21 +26,18 @@ const JobPost = () => {
 
   const { duration, salary } = jobSalary;
   return (
-    <div className="bg-white_darkBG-2 flex w-full flex-col gap-5 rounded-[10px] p-5 md:gap-6">
+    <div className="card-styles gap-5 p-5 md:gap-6">
       <div className="flex gap-5">
-        <div className="bg-natural-2_darkBG-3 size-[2.875rem] shrink-0 rounded-lg p-2 md:size-[4rem] md:rounded-[10px] md:p-2.5">
+        <div className="bg-natural-2_darkBG-3 flex size-[2.875rem] shrink-0 rounded-lg p-2 md:size-[4rem] md:rounded-[10px] md:p-2.5">
           <Image src={image} alt={jobTitle} width={80} height={80} />
         </div>
-        <div className="flex flex-col justify-between gap-3">
+        <div className="flex flex-col justify-between gap-3 overflow-x-hidden">
           <span className="text-black_white medium-16 md:medium-18">
             {jobTitle}
           </span>
-          <div className="flex gap-1">
+          <div className="hide-scrollbar flex gap-1 overflow-scroll">
             {techTags.map((tag) => (
-              <span
-                key={tag}
-                className="light-13 md:light-14 bg-natural-2_darkBG-3 rounded-md px-2.5 py-0.5 text-natural-6"
-              >
+              <span key={tag} className="badge-styles">
                 {tag}
               </span>
             ))}
@@ -50,37 +47,37 @@ const JobPost = () => {
       <p className="regular-15 md:regular-16 text-natural-7">
         {jobDescription}
       </p>
-      <div className="flex gap-1 md:gap-3">
-        <div className="bg-natural-2_darkBG-3 flex gap-2 rounded-md px-2.5 py-1">
+      <div className="hide-scrollbar relative flex gap-1 overflow-auto md:gap-3">
+        <div className="bg-natural-3_darkBG-3 flex shrink-0 gap-2 rounded-md px-2.5 py-1">
           <Image
             src="/job-type.svg"
             height={18}
             width={18}
             alt="icon to display type of work hours for job"
           />
-          <span className="regular-13 md:regular-14 text-natural-6">
+          <span className="regular-13 md:regular-14 whitespace-nowrap text-natural-6">
             {jobType}
           </span>
         </div>
-        <div className="bg-natural-2_darkBG-3 flex gap-2 rounded-md px-2.5 py-1">
+        <div className="bg-natural-3_darkBG-3 flex shrink-0 gap-2 rounded-md px-2.5 py-1">
           <Image
             src="/applicants.svg"
             height={18}
             width={18}
             alt="icon to display to number of applicants for job"
           />
-          <span className="regular-13 md:regular-14 text-natural-6">
+          <span className="regular-13 md:regular-14 whitespace-nowrap text-natural-6">
             {numberOfApplicants} Applied
           </span>
         </div>
-        <div className="bg-natural-2_darkBG-3 flex gap-2 rounded-md px-2.5 py-1">
+        <div className="bg-natural-3_darkBG-3 flex shrink-0 gap-2 rounded-md px-2.5 py-1">
           <Image
             src="/deadline.svg"
             height={18}
             width={18}
             alt="icon to display to the deadline for job"
           />
-          <span className="regular-13 md:regular-14 text-natural-6">
+          <span className="regular-13 md:regular-14 whitespace-nowrap text-natural-6">
             {formattedDate}
           </span>
         </div>
