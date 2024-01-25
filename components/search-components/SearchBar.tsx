@@ -1,13 +1,17 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { z } from "zod";
 
-type FormFields = {
-  jobTitle: string;
-  location: string;
-  jobType: string;
-};
+const schema = z.object({
+  jobTitle: z.string().min(5).max(30),
+  location: z.string().min(5).max(30),
+  jobType: z.string().min(5).max(30),
+});
+
+type FormFields = z.infer<typeof schema>;
 
 const SearchBar = () => {
   const {
@@ -15,7 +19,12 @@ const SearchBar = () => {
     handleSubmit,
     setError,
     formState: { errors, isSubmitting },
-  } = useForm<FormFields>();
+  } = useForm<FormFields>({
+    defaultValues: {
+      jobTitle: "Web Developer",
+    },
+    resolver: zodResolver(schema),
+  });
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
@@ -27,6 +36,8 @@ const SearchBar = () => {
       });
     }
   };
+
+  const isError = Object.keys(errors).length > 0;
 
   const inputDivStyles =
     "flex h-[3.3rem] w-full gap-3 border-b border-b-natural-2 dark:border-b-natural-8 lg:ml-2.5 lg:size-full lg:border-b-0 lg:px-0 relative";
@@ -54,18 +65,7 @@ const SearchBar = () => {
           className="shrink-0"
         />
         <input
-          {...register("jobTitle", {
-            required: "Please enter a job title",
-            maxLength: {
-              value: 20,
-              message: "Job title should be less than 20 characters",
-            },
-            minLength: {
-              value: 5,
-              message: "Job title should be more than 5 characters",
-            },
-            pattern: /^[A-Za-z]+$/i,
-          })}
+          {...register("jobTitle")}
           type="text"
           placeholder="Job Title, Company or Keywords"
           className={inputTagStyles}
@@ -83,18 +83,7 @@ const SearchBar = () => {
           className="shrink-0"
         />
         <input
-          {...register("location", {
-            required: "Please enter a location",
-            maxLength: {
-              value: 20,
-              message: "Location should be less than 20 characters",
-            },
-            minLength: {
-              value: 5,
-              message: "Location should be more than 5 characters",
-            },
-            pattern: /^[A-Za-z]+$/i,
-          })}
+          {...register("location")}
           type="text"
           placeholder="Select Location"
           className={inputTagStyles}
@@ -113,18 +102,7 @@ const SearchBar = () => {
           className="shrink-0"
         />
         <input
-          {...register("jobType", {
-            required: "Please enter a job type",
-            maxLength: {
-              value: 20,
-              message: "Job type should be less than 20 characters",
-            },
-            minLength: {
-              value: 5,
-              message: "Job type should be more than 5 characters",
-            },
-            pattern: /^[A-Za-z]+$/i,
-          })}
+          {...register("jobType")}
           type="text"
           placeholder="Job Type"
           className={inputTagStyles}
@@ -140,7 +118,7 @@ const SearchBar = () => {
       >
         {isSubmitting ? "Searching..." : "Find Jobs"}
       </button>
-      {errors && (
+      {isError && (
         <span className="mt-2 self-start text-red-500 lg:hidden">
           Please fill in all the fields
         </span>
