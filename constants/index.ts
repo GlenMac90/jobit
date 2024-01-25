@@ -12,3 +12,11 @@ export const navBarLinks = [
     path: "/estimated-salaries",
   },
 ];
+
+export const jobTypes = [
+  "Full Time",
+  "Part Time",
+  "Contract",
+  "Internship",
+  "Temporary",
+];
