@@ -1,25 +1,16 @@
 import { IoChevronDownOutline } from "react-icons/io5";
 
-import { getCurrentDateFormatted } from "@/utils";
 import JobPost from "@/components/job-card-components/JobPost";
 import FeaturedCompaniesCard from "@/components/job-card-components/FeaturedCompaniesCard";
 import RecommendedJobCard from "@/components/job-card-components/RecommendedJobCard";
+import PageTitle from "@/components/PageTitle";
 
 export default function Home() {
-  const todaysDate = getCurrentDateFormatted();
   return (
     <div className="flex flex-1 flex-col items-center px-6 py-7 md:py-12">
       <div className="flex w-full max-w-[80rem] flex-col gap-10 xl:flex-row">
         <div className="flex flex-col">
-          <div className="flex flex-col gap-1.5 md:gap-5">
-            <h1 className="bold-22 md:bold-32 text-black_white">
-              Welcome to the Job Search Platform for Developers
-            </h1>
-            <h3 className="regular-16 md:regular-20 text-natural-6">
-              {todaysDate}
-            </h3>
-          </div>
-
+          <PageTitle text="Welcome to the Job Search Platform for Developers" />
           <main className="mt-12 flex flex-col gap-7 md:mt-9 md:gap-8 xl:flex-row">
             <div className="flex flex-col gap-7">
               <div className="flex w-full items-center justify-between">

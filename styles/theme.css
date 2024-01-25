@@ -155,6 +155,14 @@
     @apply text-natural-7 dark:text-natural-5;
   }
 
+  .text-natural-8_natural-5 {
+    @apply text-natural-8 dark:text-natural-5;
+  }
+
+  .text-natural-8_natural-2 {
+    @apply text-natural-8 dark:text-natural-2;
+  }
+
   .card-styles {
     @apply bg-white_darkBG-2 flex w-full flex-col rounded-[10px] shadow;
   }

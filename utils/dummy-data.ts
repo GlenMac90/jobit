@@ -30,3 +30,20 @@ export const dummyRecommendedCompany = {
   maxHourlySalary: 100,
   minHourlySalary: 50,
 };
+
+export const dummySearchPageCard = {
+  jobTitle: "Software Engineer",
+  image: "/microsoft.svg",
+  companyName: "Microsoft",
+  city: "Seattle",
+  country: "USA",
+  dateAdded: new Date(2021, 10, 10),
+  jobDescription:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies, nisl nunc aliquet nunc, vitae aliquam nisl",
+  techTags: ["react", "PHP", "Java", "Python"],
+  minimumSalary: 100000,
+  maximumSalary: 200000,
+  salaryType: "yearly",
+  numberOfApplicants: 100,
+  websiteLink: "https://www.microsoft.com",
+};

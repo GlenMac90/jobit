@@ -78,3 +78,25 @@ export function formatSalary({
     duration,
   };
 }
+
+export function timeSince(date: Date): string {
+  const now = new Date();
+  const past = new Date(date);
+  const msPerMinute = 60 * 1000;
+  const msPerHour = msPerMinute * 60;
+  const msPerDay = msPerHour * 24;
+
+  const elapsed = now.getTime() - past.getTime();
+
+  if (elapsed < msPerDay) {
+    return Math.round(elapsed / msPerHour) + " hours ago";
+  } else if (elapsed < msPerDay * 7) {
+    return Math.round(elapsed / msPerDay) + " days ago";
+  } else if (elapsed < msPerDay * 30) {
+    return Math.round(elapsed / (msPerDay * 7)) + " weeks ago";
+  } else if (elapsed < msPerDay * 365) {
+    return Math.round(elapsed / (msPerDay * 30)) + " months ago";
+  } else {
+    return Math.round(elapsed / (msPerDay * 365)) + " years ago";
+  }
+}
