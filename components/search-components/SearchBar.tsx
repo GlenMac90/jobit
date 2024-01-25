@@ -69,6 +69,7 @@ const SearchBar = () => {
           type="text"
           placeholder="Job Title, Company or Keywords"
           className={inputTagStyles}
+          autoComplete="off"
         />
         {errors.jobTitle && (
           <span className={errorMessageStyles}>{errors.jobTitle.message}</span>
@@ -87,6 +88,7 @@ const SearchBar = () => {
           type="text"
           placeholder="Select Location"
           className={inputTagStyles}
+          autoComplete="off"
         />
 
         {errors.location && (
@@ -106,6 +108,7 @@ const SearchBar = () => {
           type="text"
           placeholder="Job Type"
           className={inputTagStyles}
+          autoComplete="off"
         />
         {errors.jobType && (
           <span className={errorMessageStyles}>{errors.jobType.message}</span>

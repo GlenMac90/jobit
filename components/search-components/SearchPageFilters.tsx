@@ -26,9 +26,9 @@ const SearchPageFilters = () => {
                   className="flex items-center justify-between text-white"
                 >
                   <div className="flex items-center gap-3.5">
-                    <Checkbox id="filter" />
+                    <Checkbox id={filter} />
                     <label
-                      htmlFor="filter"
+                      htmlFor={filter}
                       className="regular-14 text-natural-8_natural-5"
                     >
                       {filter}

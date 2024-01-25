@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${manrope.className} bg-natural-3_darkBG-1 h-screen overscroll-none`}
+        className={`${manrope.className} bg-natural-3_darkBG-1 h-screen overscroll-none pt-[4.375rem]`}
       >
         <ThemeProvider>
           <Navbar />

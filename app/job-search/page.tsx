@@ -1,3 +1,5 @@
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
+
 import PageTitle from "@/components/PageTitle";
 import SearchBar from "@/components/search-components/SearchBar";
 import SearchPageFilters from "@/components/search-components/SearchPageFilters";
@@ -5,12 +7,14 @@ import SearchPageJobCard from "@/components/search-components/SearchPageJobCard"
 
 const JobSearch = () => {
   const numberOfJobs = 10;
+  const currentPageNumber = 3;
+  const buttonStyles =
+    "bg-white_darkBG-2 text-natural-8_natural-5 regular-14 flex items-center gap-2 rounded-md p-2 md:px-3.5 md:py-1.5";
+
   return (
     <div className="flex flex-1 flex-col items-center px-6 py-7 md:py-12">
       <div className="flex w-full max-w-[80rem] flex-col gap-10">
-        <div className="flex flex-col">
-          <PageTitle text="Let’s find your dream job" />
-        </div>
+        <PageTitle text="Let’s find your dream job" />
         <SearchBar />
         <section className="flex w-full justify-between gap-20">
           <SearchPageFilters />
@@ -28,6 +32,21 @@ const JobSearch = () => {
               <SearchPageJobCard />
               <SearchPageJobCard />
             </div>
+            <footer className="flex w-full items-center justify-between border-t border-t-natural-2 pt-5 dark:border-t-darkBG-3">
+              <button className={buttonStyles}>
+                <span>
+                  <FaArrowLeft />
+                </span>
+                <span className="hidden md:flex">Previous</span>
+              </button>
+              <p>Page {currentPageNumber}</p>
+              <button className={buttonStyles}>
+                <span className="hidden md:flex">Next</span>
+                <span>
+                  <FaArrowRight />
+                </span>
+              </button>
+            </footer>
           </main>
         </section>
       </div>
