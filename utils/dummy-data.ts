@@ -119,3 +119,42 @@ export const dummySimilarCompanyData = {
   companyType: "Design Agency",
   websiteLink: "https://www.microsoft.com",
 };
+
+export const dummySalariesArray = [
+  {
+    location: "London, UK",
+    job_title: "Web Developer",
+    publisher_name: "Indeed",
+    publisher_link:
+      "https://uk.indeed.com/cmp/Apple/salaries/Web-Developer/London-ENG",
+    min_salary: 29540.490146735778,
+    max_salary: 50181.36073126418,
+    median_salary: 38501.7141466676,
+    salary_period: "YEAR",
+    salary_currency: "GBP",
+  },
+  {
+    location: "London, UK",
+    job_title: "Web Developer",
+    publisher_name: "Glassdoor",
+    publisher_link:
+      "https://www.glassdoor.com/Salary/Google-Web-Developer-London-Salaries-EJI_IE9079.0,6_KO7,20_IL.21,27_IM1035.htm",
+    min_salary: 43000,
+    max_salary: 100000,
+    median_salary: 50465,
+    salary_period: "YEAR",
+    salary_currency: "GBP",
+  },
+  {
+    location: "West Virginia",
+    job_title: "Web Developer",
+    publisher_name: "Salary.com",
+    publisher_link:
+      "https://www.salary.com/research/company/accelerate-uk/web-developer-salary?cjid=15781951",
+    min_salary: 60126.32501358,
+    max_salary: 77106.79913148,
+    median_salary: 68624.13805722,
+    salary_period: "YEAR",
+    salary_currency: "USD",
+  },
+];

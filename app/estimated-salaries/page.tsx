@@ -1,12 +1,16 @@
 "use client";
 
-import { KeyboardEvent } from "react";
+import dynamic from "next/dynamic";
+import { KeyboardEvent, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import ApexCharts from "apexcharts";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
+import { useTheme } from "next-themes";
 
+import { dummySalariesArray } from "@/utils/dummy-data";
 import PageTitle from "@/components/PageTitle";
+import { rapidAPIBaseUrl, rapidAPIOptions, barChartSeries } from "../fetch";
+const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const schema = z.object({
   jobTitle: z.string().min(5).max(30),
@@ -17,6 +21,10 @@ const schema = z.object({
 type FormFields = z.infer<typeof schema>;
 
 const EstimatedSalaries = () => {
+  const { theme } = useTheme();
+  console.log(theme);
+  const [series, setSeries] = useState<any>({});
+  const [options, setOptions] = useState<any>({});
   const {
     register,
     handleSubmit,
@@ -48,13 +56,19 @@ const EstimatedSalaries = () => {
   ];
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-    } catch (error) {
-      setError("root", {
-        message: "This is invalid",
-      });
-    }
+    const companies = barChartSeries(dummySalariesArray);
+    setSeries(companies);
+
+    // const url = `${rapidAPIBaseUrl}estimated-salary?job_title=${data.jobTitle}&location=${data.location}&radius=${data.radius}`;
+    // try {
+    //   const response = await fetch(url, rapidAPIOptions);
+    //   const result = await response.json();
+    //   console.log(result.data);
+    // } catch (error) {
+    //   setError("root", {
+    //     message: "This is invalid",
+    //   });
+    // }
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -167,7 +181,7 @@ const EstimatedSalaries = () => {
               </div>
             ))}
           </div>
-          <p>chart</p>
+          <Chart options={options} series={series} type="bar" height="330" />
         </div>
       </div>
     </div>
