@@ -35,6 +35,10 @@
     @apply text-[22px] font-semibold leading-[32px];
   }
 
+  .light-22 {
+    @apply text-[22px] font-light leading-[32px];
+  }
+
   .regular-20 {
     @apply text-[20px] font-normal leading-[28px];
   }
@@ -129,6 +133,10 @@
 
   .light-13 {
     @apply text-[13px] font-light leading-[24px];
+  }
+
+  .regular-10 {
+    @apply text-[10px] font-normal leading-[16px];
   }
 
   .bg-natural-3_darkBG-1 {

@@ -22,6 +22,12 @@ const config = {
         xs: "320px",
       },
       colors: {
+        yellow: {
+          primary: "#FDDD8C",
+        },
+        pink: {
+          primary: "#FFBBD7",
+        },
         white: "#FFFFFF",
         black: "#171725",
         primary: "#0BAB7C",
