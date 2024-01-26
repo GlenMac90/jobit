@@ -32,9 +32,7 @@ const JobPost = () => {
           <Image src={image} alt={jobTitle} width={80} height={80} />
         </div>
         <div className="flex flex-col justify-between gap-3 overflow-x-hidden">
-          <span className="text-black_white medium-16 md:medium-18">
-            {jobTitle}
-          </span>
+          <span className="label-styles">{jobTitle}</span>
           <div className="hide-scrollbar flex gap-1 overflow-scroll">
             {techTags.map((tag) => (
               <span key={tag} className="badge-styles">

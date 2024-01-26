@@ -19,6 +19,10 @@
     @apply text-[24px] font-semibold leading-[32px];
   }
 
+  .medium-24 {
+    @apply text-[24px] font-medium leading-[32px];
+  }
+
   .bold-22 {
     @apply text-[22px] font-bold leading-[32px];
   }
@@ -61,6 +65,10 @@
 
   .regular-16 {
     @apply text-[16px] font-normal leading-[24px];
+  }
+
+  .light-16 {
+    @apply text-[16px] font-light leading-[24px];
   }
 
   .bold-15 {
@@ -123,6 +131,10 @@
     @apply bg-natural-3 dark:bg-darkBG-1;
   }
 
+  .bg-natural-3_natural-8 {
+    @apply bg-natural-3 dark:bg-natural-8;
+  }
+
   .bg-white_darkBG-1 {
     @apply bg-white dark:bg-darkBG-1;
   }
@@ -159,6 +171,10 @@
     @apply text-natural-8 dark:text-natural-5;
   }
 
+  .text-natural-8_white {
+    @apply text-natural-8 dark:text-white;
+  }
+
   .text-natural-8_natural-2 {
     @apply text-natural-8 dark:text-natural-2;
   }
@@ -169,5 +185,9 @@
 
   .badge-styles {
     @apply light-13 md:light-14 bg-natural-3_darkBG-3 rounded-md px-2.5 py-0.5 text-natural-6;
+  }
+
+  .label-styles {
+    @apply medium-16 md:medium-18 text-black_white;
   }
 }

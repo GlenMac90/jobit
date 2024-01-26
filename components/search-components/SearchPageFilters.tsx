@@ -16,7 +16,7 @@ const SearchPageFilters = () => {
       <Accordion type="multiple" className="w-full">
         {searchPageFilters.map((pageFilter) => (
           <AccordionItem key={pageFilter.heading} value={pageFilter.heading}>
-            <AccordionTrigger className="regular-18 text-black_white no-underline">
+            <AccordionTrigger className="label-styles no-underline">
               {pageFilter.heading}
             </AccordionTrigger>
             <AccordionContent className="flex flex-col gap-2">

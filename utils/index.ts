@@ -79,6 +79,24 @@ export function formatSalary({
   };
 }
 
+type SingleSalaryProps = {
+  salary: number;
+  salaryType: "yearly" | "monthly" | string;
+};
+
+export function formatSingleSalary({
+  salary,
+  salaryType,
+}: SingleSalaryProps): string {
+  const duration = salaryType === "yearly" ? "/ Year" : "/ Month";
+
+  const salaryParts = salary.toString().split("");
+  salaryParts.splice(-3, 0, ",");
+  const formattedSalary = `$${salaryParts.join("")}`;
+
+  return `${formattedSalary} ${duration}`;
+}
+
 export function timeSince(date: Date): string {
   const now = new Date();
   const past = new Date(date);
@@ -99,4 +117,23 @@ export function timeSince(date: Date): string {
   } else {
     return Math.round(elapsed / (msPerDay * 365)) + " years ago";
   }
+}
+
+export function daysUntil(date: Date): string {
+  const now = new Date();
+  now.setHours(0, 0, 0, 0);
+
+  const futureDate = new Date(date);
+  futureDate.setHours(0, 0, 0, 0);
+
+  const msPerDay = 24 * 60 * 60 * 1000;
+  const timeDiff = futureDate.getTime() - now.getTime();
+
+  const daysDiff = Math.floor(timeDiff / msPerDay);
+
+  if (daysDiff < 0) {
+    return "0 days left";
+  }
+
+  return `${daysDiff} days left`;
 }
