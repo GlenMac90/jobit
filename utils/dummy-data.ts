@@ -93,3 +93,29 @@ export const dummySimilarJobData = {
   hourlySalary: 100,
   deadline: new Date(2021, 10, 10),
 };
+
+export const dummyCompanyDetailsData = {
+  image: "/microsoft.svg",
+  companyName: "Microsoft",
+  city: "Seattle",
+  country: "USA",
+  companyType: "Design Agency",
+};
+
+export const dummyCompanyDetailsSmallCard = {
+  image: "/microsoft.svg",
+  jobTitle: "Software Engineer",
+  jobDescription:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies, nisl nunc aliquet nunc, vitae aliquam nisl",
+  techTags: ["react", "PHP", "Java", "Python"],
+  minimumSalary: 100000,
+  maximumSalary: 200000,
+  salaryType: "yearly",
+};
+
+export const dummySimilarCompanyData = {
+  image: "/microsoft.svg",
+  companyName: "Microsoft",
+  companyType: "Design Agency",
+  websiteLink: "https://www.microsoft.com",
+};
