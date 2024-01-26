@@ -47,3 +47,49 @@ export const dummySearchPageCard = {
   numberOfApplicants: 100,
   websiteLink: "https://www.microsoft.com",
 };
+
+export const dummyJobDetailsData = {
+  jobTitle: "Software Engineer",
+  image: "/microsoft.svg",
+  companyName: "Microsoft",
+  companyType: "Design Agency",
+  city: "Seattle",
+  country: "USA",
+  dateAdded: new Date(2021, 10, 10),
+  jobDescription:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies, nisl nunc aliquet nunc, vitae aliquam nisl Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies, nisl nunc aliquet nunc, vitae aliquam nisl Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies, nisl nunc aliquet nunc, vitae aliquam nisl",
+  yearsOfExperience: 5,
+  workLevel: "Senior",
+  jobType: "Full Time",
+  offerSalary: 100000,
+  salaryType: "yearly",
+  responsibilities: [
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies, nisl nunc aliquet nunc, vitae aliquam",
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies, nisl nunc aliquet nunc, vitae aliquam nisl",
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies, nisl nunc aliquet nunc, vitae aliquam",
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies, nisl nunc aliquet nunc, vitae aliquam nisl",
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies, nisl nunc aliquet nunc, vitae aliquam",
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies, nisl nunc aliquet nunc, vitae aliquam nisl",
+  ],
+  qualifications: [
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies, nisl nunc aliquet nunc, vitae aliquam",
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies, nisl nunc aliquet nunc, vitae aliquam nisl",
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies, nisl nunc aliquet nunc, vitae aliquam",
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies, nisl nunc aliquet nunc, vitae aliquam nisl",
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies, nisl nunc aliquet nunc, vitae aliquam",
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies, nisl nunc aliquet nunc, vitae aliquam nisl",
+  ],
+  websiteLink: "https://www.microsoft.com",
+  companyDescription:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies, nisl nunc aliquet nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl sed aliquam ultricies, nisl nunc aliquet nunc",
+};
+
+export const dummySimilarJobData = {
+  image: "/microsoft.svg",
+  companyName: "Microsoft",
+  city: "Seattle",
+  country: "USA",
+  jobTitle: "Software Engineer",
+  hourlySalary: 100,
+  deadline: new Date(2021, 10, 10),
+};

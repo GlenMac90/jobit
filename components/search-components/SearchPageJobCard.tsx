@@ -3,8 +3,8 @@ import Link from "next/link";
 
 import { dummySearchPageCard } from "@/utils/dummy-data";
 import { formatSalary, timeSince } from "@/utils";
-import Dot from "../Dot";
 import FormattedText from "../FormattedText";
+import JobTitleAndInfo from "../JobTitleAndInfo";
 
 const SearchPageJobCard = () => {
   const {
@@ -42,18 +42,13 @@ const SearchPageJobCard = () => {
             className="size-8 shrink-0 md:size-12"
           />
         </div>
-        <div className="regular-13 md:regular-14 flex h-full flex-col pt-0.5">
-          <h3>{jobTitle}</h3>
-          <div className="flex flex-wrap gap-x-1 text-natural-7">
-            <span>{companyName}</span>
-            <Dot />
-            <span>
-              {city}, {country}
-            </span>
-            <Dot />
-            <span>{formattedDate}</span>
-          </div>
-        </div>
+        <JobTitleAndInfo
+          jobTitle={jobTitle}
+          companyName={companyName}
+          city={city}
+          country={country}
+          date={formattedDate}
+        />
       </div>
       <p className="light-14 md:light-13 text-natural-7_natural-5">
         {jobDescription}
