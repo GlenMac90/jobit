@@ -1,5 +1,9 @@
 const CompanyDetails = () => {
-  return <div>CompanyDetails</div>;
+  return (
+    <div>
+      <div>Company Details</div>
+    </div>
+  );
 };
 
 export default CompanyDetails;

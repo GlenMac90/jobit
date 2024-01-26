@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 import JobTitleAndInfo from "../JobTitleAndInfo";
-
 import { dummyJobDetailsData } from "@/utils/dummy-data";
 import { timeSince, formatSingleSalary } from "@/utils";
 
