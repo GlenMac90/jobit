@@ -34,7 +34,7 @@ const CompanyDetailsLargeCard = ({ data }: { data: string }) => {
           />
         </div>
       </div>
-      <div className="mt-9 flex h-full flex-col px-3 md:mt-16 md:gap-1.5 md:px-6">
+      <div className="mt-9 flex flex-col px-3 md:mt-16 md:gap-1.5 md:px-6">
         <h3 className="semibold-22 md:semibold-32">{companyName}</h3>
         <div className="regular-14 md:regular-18 flex flex-wrap gap-1 text-natural-7">
           <span>{companyName}</span>

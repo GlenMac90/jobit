@@ -46,25 +46,20 @@ const JobDetails = async ({ params }: { params: { id: string } }) => {
   const { Qualifications: qualifications, Responsibilities: responsibilities } =
     jobHighlights;
 
-  const {
-    median_salary: offerSalary,
-    salary_period: salaryPeriod,
-    salary_currency: currency,
-    location,
-  } = estimateSalaries[0];
+  const { location } = estimateSalaries?.[0] ?? [];
 
   const largeCardData = {
     jobTitle,
     image,
     companyName,
-    location,
+    location: estimateSalaries?.[0]?.location ?? null,
     dateAdded,
     jobDescription,
     workLevel: "Senior",
     jobType,
-    currency,
-    offerSalary,
-    salaryPeriod,
+    currency: estimateSalaries?.[0]?.salary_currency ?? null,
+    offerSalary: estimateSalaries?.[0]?.median_salary ?? null,
+    salaryPeriod: estimateSalaries?.[0]?.salary_period ?? null,
     responsibilities,
     qualifications,
     websiteLink,

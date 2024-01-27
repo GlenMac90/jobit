@@ -30,8 +30,8 @@ const RecentJobsList = ({ data }: { data: string }) => {
     setShowMore(false);
     const filteredData = parsedData.filter(
       (job: any) =>
-        job.job_title.includes(data.inputText) ||
-        job.job_description.includes(data.inputText)
+        job.job_title.toLowerCase().includes(data.inputText.toLowerCase()) ||
+        job.job_description.toLowerCase().includes(data.inputText.toLowerCase())
     );
     setJobList(filteredData);
   };

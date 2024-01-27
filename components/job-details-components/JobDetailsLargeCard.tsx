@@ -24,11 +24,14 @@ const JobDetailsLargeCard = ({ data }: { data: any }) => {
   } = data;
 
   const formattedDate = timeSince(dateAdded);
-  const formattedSalary = formatSingleSalary({
-    currency,
-    salary: offerSalary,
-    duration: salaryPeriod,
-  });
+  const formattedSalary =
+    currency && offerSalary && salaryPeriod
+      ? formatSingleSalary({
+          currency,
+          salary: offerSalary,
+          duration: salaryPeriod,
+        })
+      : "Not Specified";
 
   const jobInfo = [
     {

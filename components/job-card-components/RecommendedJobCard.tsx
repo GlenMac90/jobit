@@ -30,6 +30,9 @@ const RecommendedJobCard = ({ data }: { data: any }) => {
     salaryPeriod,
   } = data;
 
+  const formattedJobType = jobType.toLowerCase();
+  const formattedSalaryPeriod = salaryPeriod && salaryPeriod.toLowerCase();
+
   const minimumSalary =
     minSalary >= 1000 ? `${(minSalary / 1000).toFixed(0)}k` : `${minSalary}`;
   const maximumSalary =
@@ -64,11 +67,15 @@ const RecommendedJobCard = ({ data }: { data: any }) => {
       {minSalary && maxSalary && salaryPeriod && (
         <div className="flex h-full flex-col justify-between">
           <p className="text-black_white regular-13 sm:regular-14 whitespace-nowrap">
-            {minimumSalary}-{maximumSalary}
-            <span className="regular-14 text-natural-6"> / {salaryPeriod}</span>
+            {minimumSalary}
+            {maximumSalary !== minimumSalary && `-${maximumSalary}`}
+            <span className="regular-14 capitalize text-natural-6">
+              {" "}
+              / {formattedSalaryPeriod}
+            </span>
           </p>
-          <span className="regular-13 sm:regular-14 text-end text-natural-6">
-            {jobType}
+          <span className="regular-13 sm:regular-14 text-end capitalize text-natural-6">
+            {formattedJobType}
           </span>
         </div>
       )}
