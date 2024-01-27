@@ -3,6 +3,7 @@ import Image from "next/image";
 import { dummyJobData } from "@/utils/dummy-data";
 import { daysLeftUntil, formatSalary } from "@/utils";
 import FormattedText from "../FormattedText";
+import SmallCardHeadingAndTags from "../SmallCardHeadingAndTags";
 
 const JobPost = () => {
   const {
@@ -27,21 +28,11 @@ const JobPost = () => {
 
   return (
     <div className="card-styles gap-5 p-5 md:gap-6">
-      <div className="flex gap-5">
-        <div className="bg-natural-2_darkBG-3 flex size-[2.875rem] shrink-0 rounded-lg p-2 md:size-[4rem] md:rounded-[10px] md:p-2.5">
-          <Image src={image} alt={jobTitle} width={80} height={80} />
-        </div>
-        <div className="flex flex-col justify-between gap-3 overflow-x-hidden">
-          <span className="label-styles">{jobTitle}</span>
-          <div className="hide-scrollbar flex gap-1 overflow-scroll">
-            {techTags.map((tag) => (
-              <span key={tag} className="badge-styles">
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
+      <SmallCardHeadingAndTags
+        image={image}
+        jobTitle={jobTitle}
+        techTags={techTags}
+      />
       <p className="regular-15 md:regular-16 text-natural-7">
         {jobDescription}
       </p>

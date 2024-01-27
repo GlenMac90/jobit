@@ -1,8 +1,10 @@
 import { IoIosArrowBack } from "react-icons/io";
 
 import PageTitle from "@/components/PageTitle";
-import JobDetailsLargeCard from "@/components/job-details-components/JobDetailsLargeCard";
-import SimilarJobCard from "@/components/job-details-components/SimilarJobCard";
+import {
+  JobDetailsLargeCard,
+  SimilarJobCard,
+} from "@/components/job-details-components";
 
 const JobDetails = () => {
   return (

@@ -20,7 +20,7 @@ const MobileNavBar = ({
 
   return (
     <aside
-      className="bg-white_darkBG-1 fixed right-0 top-[4.375rem] z-10 flex h-screen w-full max-w-[16.375rem] items-center p-3"
+      className="bg-white_darkBG-1 fixed right-0 top-[4.375rem] flex h-screen w-full max-w-[16.375rem] items-center p-3"
       onClick={handleClick}
     >
       <div className="flex w-full flex-col gap-9">
