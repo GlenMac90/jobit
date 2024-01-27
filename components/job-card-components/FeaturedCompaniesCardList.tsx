@@ -1,14 +1,16 @@
 import { FeaturedCompaniesCard } from ".";
 import { FeaturedCompaniesCardProps } from "./FeaturedCompaniesCard";
 
-const FeaturedCompaniesCardList = ({ data }: any) => {
-  const reducedList = data.employers.slice(0, 3);
+const FeaturedCompaniesCardList = ({ data }: { data: string }) => {
+  const parsedData = JSON.parse(data);
+  const reducedList = parsedData.employers.slice(0, 3);
 
   const list = reducedList.map((employer: any) => ({
     name: employer.name,
     id: employer.value,
     count: employer.est_count,
   }));
+
   return (
     <>
       <h3 className="semibold-22 text-black_white">Featured Companies</h3>

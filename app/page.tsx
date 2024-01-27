@@ -6,8 +6,11 @@ import RecommendedList from "@/components/job-card-components/RecommendedList";
 
 export default async function Home() {
   const jobData = await fetchJobs();
+  const stringifiedJobData = JSON.stringify(jobData);
   const employers = await fetchCompanyDetails();
+  const stringifiedEmployers = JSON.stringify(employers);
   const jobListData = await fetchJobLists();
+  const stringifiedJobListData = JSON.stringify(jobListData);
 
   return (
     <div className="flex flex-1 flex-col items-center px-6 py-7 md:py-12">
@@ -16,10 +19,10 @@ export default async function Home() {
           <PageTitle text="Welcome to the Job Search Platform for Developers" />
           <main className="mt-12 flex flex-col gap-7 md:mt-9 md:gap-8 xl:flex-row">
             <div className="flex flex-col gap-7">
-              <JobCardList data={jobData} />
-              <FeaturedCompaniesCardList data={employers} />
+              <JobCardList data={stringifiedJobData} />
+              <FeaturedCompaniesCardList data={stringifiedEmployers} />
             </div>
-            <RecommendedList data={jobListData} />
+            <RecommendedList data={stringifiedJobListData} />
           </main>
         </div>
       </div>

@@ -19,10 +19,11 @@ interface JobDataProps {
   jobScore: number;
 }
 
-const JobCardList = ({ data }: { data: any }) => {
+const JobCardList = ({ data }: { data: string }) => {
+  const parsedData = JSON.parse(data);
   const [showMore, setShowMore] = useState(false);
 
-  const mappedJobData = data.map((job: any) => ({
+  const mappedJobData = parsedData.map((job: any) => ({
     id: job.job_id,
     image: job.employer_logo,
     jobTitle: job.job_title,

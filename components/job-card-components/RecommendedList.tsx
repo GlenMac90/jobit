@@ -1,8 +1,9 @@
 import { RecommendedJobCard } from ".";
 import { RecommendedJobCardProps } from "./RecommendedJobCard";
 
-const RecommendedList = ({ data }: any) => {
-  const mappedJobListData = data.slice(0, 8).map((job: any) => ({
+const RecommendedList = ({ data }: { data: string }) => {
+  const parsedData = JSON.parse(data);
+  const mappedJobListData = parsedData.slice(0, 8).map((job: any) => ({
     id: job.job_id,
     employerName: job.employer_name,
     jobTitle: job.job_title,
@@ -14,6 +15,7 @@ const RecommendedList = ({ data }: any) => {
     maxSalary: job.job_max_salary,
     salaryPeriod: job.job_salary_period,
   }));
+
   return (
     <aside className="flex w-full flex-col gap-9 xl:max-w-[25rem]">
       <div className="flex w-full items-center justify-between">
