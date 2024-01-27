@@ -3,15 +3,13 @@ import Dot from "./Dot";
 const JobTitleAndInfo = ({
   jobTitle,
   companyName,
-  city,
-  country,
+  location,
   date,
   large = false,
 }: {
   jobTitle: string;
   companyName: string;
-  city: string;
-  country: string;
+  location: string;
   date: string;
   large?: boolean;
 }) => {
@@ -23,9 +21,7 @@ const JobTitleAndInfo = ({
       <div className={`flex flex-wrap gap-x-1 text-natural-7 ${textStyles}`}>
         <span>{companyName}</span>
         <Dot />
-        <span>
-          {city}, {country}
-        </span>
+        <span>{location}</span>
         <Dot />
         <span>{date}</span>
       </div>

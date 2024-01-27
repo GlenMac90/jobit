@@ -1,12 +1,18 @@
 import Image from "next/image";
 
-import { dummyCompanyDetailsData } from "@/utils/dummy-data";
 import Dot from "../Dot";
-import CompanyDetailsSmallCard from "./CompanyDetailsSmallCard";
+import RecentJobsList from "./RecentJobsList";
 
-const CompanyDetailsLargeCard = () => {
-  const { image, companyName, city, country, companyType } =
-    dummyCompanyDetailsData;
+const CompanyDetailsLargeCard = ({ data }: { data: string }) => {
+  const parsedData = JSON.parse(data);
+  console.log(parsedData);
+  const {
+    employer_logo: image,
+    employer_name: companyName,
+    job_city: city,
+    job_country: country,
+    employer_company_type: companyType,
+  } = parsedData[0];
 
   return (
     <div className="bg-natural-3_darkBG-1 flex w-full flex-col rounded-[10px]">
@@ -24,7 +30,7 @@ const CompanyDetailsLargeCard = () => {
             height={46}
             width={46}
             alt={`company logo for company`}
-            className="size-[3rem] shrink-0 rounded-md md:size-[4rem]"
+            className="size-[3rem] shrink-0 rounded-md object-contain md:size-[4rem]"
           />
         </div>
       </div>
@@ -41,32 +47,7 @@ const CompanyDetailsLargeCard = () => {
           {companyType}
         </span>
       </div>
-      <section className="bg-white_darkBG-2 mt-9 flex w-full flex-col rounded-[10px] px-4 py-5 md:px-5 md:py-7">
-        <form className="bg-natural-3_darkBG-3 flex w-full gap-4 rounded-2xl px-4 py-2 lg:w-1/2">
-          <Image
-            src="/search.svg"
-            height={24}
-            width={24}
-            alt="search icon for search bar"
-          />
-          <input
-            className="bg-natural-3_darkBG-3 w-full text-natural-6 outline-none"
-            placeholder="Search Job Title or Keyword"
-          />
-          <button className="medium-13 md:medium-15 rounded-[10px] bg-primary px-3.5 py-2 text-white">
-            Search
-          </button>
-        </form>
-        <h3 className="semibold-16 md:semibold-18 mt-5 md:mt-7">
-          Recently Posted Job
-        </h3>
-        <div className="mt-2 flex w-full flex-col gap-2 md:mt-5 md:gap-x-9 md:gap-y-5 lg:grid lg:grid-cols-2">
-          <CompanyDetailsSmallCard />
-          <CompanyDetailsSmallCard />
-          <CompanyDetailsSmallCard />
-          <CompanyDetailsSmallCard />
-        </div>
-      </section>
+      <RecentJobsList data={data} />
     </div>
   );
 };

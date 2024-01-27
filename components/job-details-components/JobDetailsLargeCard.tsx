@@ -2,44 +2,42 @@ import Image from "next/image";
 import Link from "next/link";
 
 import JobTitleAndInfo from "../JobTitleAndInfo";
-import { dummyJobDetailsData } from "@/utils/dummy-data";
 import { timeSince, formatSingleSalary } from "@/utils";
 
-const JobDetailsLargeCard = () => {
+const JobDetailsLargeCard = ({ data }: { data: any }) => {
   const {
     jobTitle,
     image,
     companyName,
-    companyType,
-    city,
-    country,
+    location,
     dateAdded,
     jobDescription,
     yearsOfExperience,
     workLevel,
     jobType,
+    currency,
     offerSalary,
-    salaryType,
+    salaryPeriod,
     responsibilities,
     qualifications,
     websiteLink,
-    companyDescription,
-  } = dummyJobDetailsData;
+  } = data;
 
   const formattedDate = timeSince(dateAdded);
   const formattedSalary = formatSingleSalary({
+    currency,
     salary: offerSalary,
-    salaryType,
+    duration: salaryPeriod,
   });
 
   const jobInfo = [
     {
       label: "Experience",
-      value: `Minimum ${yearsOfExperience} years`,
+      value: yearsOfExperience ? `Minimum ${yearsOfExperience} years` : "Any",
     },
     {
       label: "Work Level",
-      value: `${workLevel} Level`,
+      value: workLevel ? `${workLevel} Level` : "Not Specified",
     },
     {
       label: "Employment Type",
@@ -51,7 +49,12 @@ const JobDetailsLargeCard = () => {
     },
   ];
 
-  const lists = [
+  interface ListItem {
+    title: string;
+    list: string[];
+  }
+
+  const lists: ListItem[] = [
     {
       title: "Responsibilities",
       list: responsibilities,
@@ -74,11 +77,11 @@ const JobDetailsLargeCard = () => {
         />
         <div className="bg-natural-3_natural-8 absolute bottom-0 left-2.5 flex translate-y-6 rounded-[10px] p-1 md:left-5 md:translate-y-12">
           <Image
-            src={image}
+            src={image || "/jobit-logo.svg"}
             height={46}
             width={46}
             alt={`company logo for ${companyName}`}
-            className="size-[3rem] shrink-0 rounded-md md:size-[4rem]"
+            className="size-[3rem] shrink-0 rounded-md object-cover md:size-[4rem]"
           />
         </div>
       </div>
@@ -88,8 +91,7 @@ const JobDetailsLargeCard = () => {
           <JobTitleAndInfo
             jobTitle={jobTitle}
             companyName={companyName}
-            city={city}
-            country={country}
+            location={location}
             date={formattedDate}
             large
           />
@@ -122,46 +124,29 @@ const JobDetailsLargeCard = () => {
         <p className="text-natural-7_natural-5 light-14 md:light-16 mt-2.5">
           {jobDescription}
         </p>
-        <div className="mb-7 mt-[3.6rem] flex w-full flex-col gap-7 md:mt-[1.75rem]">
-          {lists.map((list) => (
-            <div key={list.title} className="flex flex-col">
-              <label className="label-styles mb-3">{list.title}</label>
-              <ul className="flex flex-col gap-3">
-                {list.list.map((item) => (
-                  <li key={item} className="flex gap-2.5">
-                    <div className="flex size-2 shrink-0 translate-x-1 translate-y-2 rounded-full border-2 border-primary" />
-                    <span className="light-16 text-natural-7_natural-5">
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <div className="flex w-full flex-col border-t border-t-natural-2 pt-7 dark:border-t-darkBG-3">
-          <h3 className="label-styles mb-3">About the Company</h3>
-          <div className="mt-5 flex gap-5">
-            <div className="bg-natural-3_natural-8 flex rounded-[10px] p-1">
-              <Image
-                src={image}
-                height={46}
-                width={46}
-                alt={`company logo for ${companyName}`}
-                className="size-[2.125rem] shrink-0 rounded-md md:size-[3.125rem]"
-              />
-            </div>
-            <div className="flex h-full flex-col justify-center gap-0.5">
-              <p className="medium-16 md:medium-18 text-black_white">
-                {companyName}
-              </p>
-              <p className="regular-16 text-natural-7">{companyType}</p>
-            </div>
+        {lists.length > 0 && (
+          <div className="mb-7 mt-[3.6rem] flex w-full flex-col gap-7 md:mt-[1.75rem]">
+            {lists.map((list) => (
+              <div key={list.title} className="flex flex-col">
+                {list.list !== undefined && (
+                  <>
+                    <label className="label-styles mb-3">{list.title}</label>
+                    <ul className="flex flex-col gap-3">
+                      {list.list.map((item) => (
+                        <li key={item} className="flex gap-2.5">
+                          <div className="flex size-2 shrink-0 translate-x-1 translate-y-2 rounded-full border-2 border-primary" />
+                          <span className="light-16 text-natural-7_natural-5">
+                            {item}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+              </div>
+            ))}
           </div>
-          <p className="light-16 text-natural-7_natural-5 mt-5 md:mt-7">
-            {companyDescription}
-          </p>
-        </div>
+        )}
       </div>
     </div>
   );
