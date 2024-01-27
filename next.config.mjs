@@ -9,6 +9,9 @@ const nextConfig = {
       "www.karrierefuehrer.de",
       "cohere.ai",
       "random42.com",
+      "prod.ucwe.capgemini.com",
+      "lookaside.fbsbx.com",
+      "images.g2crowd.com",
     ],
   },
 };

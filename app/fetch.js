@@ -290,3 +290,25 @@ export const fetchJobLists = async () => {
     console.log(error);
   }
 };
+
+export const fetchSimilarCompanies = async (companyName) => {
+  const url = `${rapidAPIBaseUrl}search-filters?query=${companyName}`;
+  try {
+    const response = await fetch(url, rapidAPIOptions);
+    const { data } = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchCompanyJobs = async (companyName) => {
+  const url = `${rapidAPIBaseUrl}search?query=${companyName}`;
+  try {
+    const response = await fetch(url, rapidAPIOptions);
+    const { data } = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};

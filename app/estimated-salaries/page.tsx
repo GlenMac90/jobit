@@ -7,9 +7,23 @@ import { z } from "zod";
 
 import { initialData, rapidAPIBaseUrl, rapidAPIOptions } from "../fetch";
 import { SalaryData } from "@/types";
-import { salaryFields } from "@/constants";
 import EstimateSalaryBarChart from "@/components/EstimateSalaryBarChart";
 import PageTitle from "@/components/PageTitle";
+
+const salaryFields = [
+  {
+    label: "Minimum Salary",
+    color: "bg-yellow-primary",
+  },
+  {
+    label: "Median Salary",
+    color: "bg-primary",
+  },
+  {
+    label: "Maximum Salary",
+    color: "bg-pink-primary",
+  },
+];
 
 const estimatedSalariesSchema = z.object({
   jobTitle: z.string().min(5).max(30),
