@@ -23,6 +23,7 @@ const JobDetailsLargeCard = ({ data }: { data: any }) => {
     websiteLink,
   } = data;
 
+  const formattedJobType = jobType.toLowerCase();
   const formattedDate = timeSince(dateAdded);
   const formattedSalary =
     currency && offerSalary && salaryPeriod
@@ -44,7 +45,7 @@ const JobDetailsLargeCard = ({ data }: { data: any }) => {
     },
     {
       label: "Employment Type",
-      value: `${jobType} Jobs`,
+      value: `${formattedJobType} Jobs`,
     },
     {
       label: "Offer Salary",
@@ -111,7 +112,7 @@ const JobDetailsLargeCard = ({ data }: { data: any }) => {
               <label className="medium-13 md:medium-14 text-natural-6">
                 {info.label}
               </label>
-              <p className="medium-14 medium-16 text-natural-8_white">
+              <p className="medium-14 medium-16 text-natural-8_white capitalize">
                 {info.value}
               </p>
             </div>
