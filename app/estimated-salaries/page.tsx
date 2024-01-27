@@ -1,30 +1,29 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { KeyboardEvent, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
-import { useTheme } from "next-themes";
 
-import { dummySalariesArray } from "@/utils/dummy-data";
+import { initialData, rapidAPIBaseUrl, rapidAPIOptions } from "../fetch";
+import { SalaryData } from "@/types";
+import { salaryFields } from "@/constants";
+import EstimateSalaryBarChart from "@/components/EstimateSalaryBarChart";
 import PageTitle from "@/components/PageTitle";
-import { rapidAPIBaseUrl, rapidAPIOptions, barChartSeries } from "../fetch";
-const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-const schema = z.object({
+const estimatedSalariesSchema = z.object({
   jobTitle: z.string().min(5).max(30),
   location: z.string().min(1).max(30),
   radius: z.number().min(1).max(100),
 });
 
-type FormFields = z.infer<typeof schema>;
+type FormFields = z.infer<typeof estimatedSalariesSchema>;
 
 const EstimatedSalaries = () => {
-  const { theme } = useTheme();
-  console.log(theme);
-  const [series, setSeries] = useState<any>({});
-  const [options, setOptions] = useState<any>({});
+  const [data, setData] = useState<SalaryData[]>(initialData);
+  const [graphJobTitle, setGraphJobTitle] = useState<string>("Web Developer");
+  const [graphLocation, setGraphLocation] = useState<string>("London");
+
   const {
     register,
     handleSubmit,
@@ -35,43 +34,26 @@ const EstimatedSalaries = () => {
       jobTitle: "Web Developer",
       radius: 20,
     },
-    resolver: zodResolver(schema),
+    resolver: zodResolver(estimatedSalariesSchema),
   });
 
-  const jobTitle = "Software Engineer";
-  const location = "New York, NY";
-  const salaryFields = [
-    {
-      label: "Minimum Salary",
-      color: "bg-yellow-primary",
-    },
-    {
-      label: "Median Salary",
-      color: "bg-primary",
-    },
-    {
-      label: "Maximum Salary",
-      color: "bg-pink-primary",
-    },
-  ];
-
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    const companies = barChartSeries(dummySalariesArray);
-    setSeries(companies);
-
-    // const url = `${rapidAPIBaseUrl}estimated-salary?job_title=${data.jobTitle}&location=${data.location}&radius=${data.radius}`;
-    // try {
-    //   const response = await fetch(url, rapidAPIOptions);
-    //   const result = await response.json();
-    //   console.log(result.data);
-    // } catch (error) {
-    //   setError("root", {
-    //     message: "This is invalid",
-    //   });
-    // }
+    setGraphJobTitle(data.jobTitle);
+    setGraphLocation(data.location);
+    const url = `${rapidAPIBaseUrl}estimated-salary?job_title=${data.jobTitle}&location=${data.location}&radius=${data.radius}`;
+    try {
+      const response = await fetch(url, rapidAPIOptions);
+      const { data } = await response.json();
+      setData(data);
+    } catch (error) {
+      setError("root", {
+        message: "This is invalid",
+      });
+    }
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (isSubmitting) return;
     if (e.key === "Enter") {
       e.preventDefault();
       handleSubmit(onSubmit)();
@@ -162,9 +144,9 @@ const EstimatedSalaries = () => {
         <div className="bg-white_darkBG-2 flex w-full flex-col gap-2.5 rounded-[10px] p-5 md:p-6">
           <p className="semibold-16 md:semibold-22 text-black_white">
             Estimated Salary<span className="light-16 md:light-22"> for </span>
-            {jobTitle}
+            {graphJobTitle}
             <span className="light-16 md:light-22"> in </span>
-            {location}
+            {graphLocation}
           </p>
           <div className="flex w-full gap-2 md:gap-4">
             {salaryFields.map((field) => (
@@ -181,7 +163,7 @@ const EstimatedSalaries = () => {
               </div>
             ))}
           </div>
-          <Chart options={options} series={series} type="bar" height="330" />
+          <EstimateSalaryBarChart data={data} />
         </div>
       </div>
     </div>

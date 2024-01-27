@@ -7,51 +7,48 @@ export const rapidAPIOptions = {
   },
 };
 
-export const barChartSeries = (searchData: any) => {
-  return [
-    {
-      name: "Min Salary",
-      data: searchData?.map((item: any) =>
-        item.min_salary
-          ? Math.round(
-              item.salary_period === "YEAR"
-                ? item.min_salary / 12
-                : item.min_salary
-            )
-          : 0
-      ),
-    },
-    {
-      name: "Max Salary",
-      data: searchData?.map((item: any) =>
-        item.max_salary
-          ? Math.round(
-              item.salary_period === "YEAR"
-                ? item.max_salary / 12
-                : item.max_salary
-            )
-          : 0
-      ),
-    },
-    {
-      name: "Median Salary",
-      data: searchData?.map((item: any) =>
-        item.median_salary
-          ? Math.round(
-              item.salary_period === "YEAR"
-                ? item.median_salary / 12
-                : item.median_salary
-            )
-          : 0
-      ),
-    },
-  ];
-};
+export const initialData = [
+  {
+    location: "London, UK",
+    job_title: "Web Developer",
+    publisher_name: "Indeed",
+    publisher_link:
+      "https://uk.indeed.com/cmp/Apple/salaries/Web-Developer/London-ENG",
+    min_salary: 29540.490146735778,
+    max_salary: 50181.36073126418,
+    median_salary: 38501.7141466676,
+    salary_period: "YEAR",
+    salary_currency: "GBP",
+  },
+  {
+    location: "London, UK",
+    job_title: "Web Developer",
+    publisher_name: "Glassdoor",
+    publisher_link:
+      "https://www.glassdoor.com/Salary/Google-Web-Developer-London-Salaries-EJI_IE9079.0,6_KO7,20_IL.21,27_IM1035.htm",
+    min_salary: 43000,
+    max_salary: 100000,
+    median_salary: 50465,
+    salary_period: "YEAR",
+    salary_currency: "GBP",
+  },
+  {
+    location: "West Virginia",
+    job_title: "Web Developer",
+    publisher_name: "Salary.com",
+    publisher_link:
+      "https://www.salary.com/research/company/accelerate-uk/web-developer-salary?cjid=15781951",
+    min_salary: 60126.32501358,
+    max_salary: 77106.79913148,
+    median_salary: 68624.13805722,
+    salary_period: "YEAR",
+    salary_currency: "USD",
+  },
+];
 
-export const barChartOptions = (searchData, theme, isDarkMode) => {
+export const chartOptions = ({ data, theme, isDarkMode }) => {
   return {
     chart: {
-      // breakpoint: 480,
       id: "column",
       width: "100%",
       toolbar: {
@@ -103,7 +100,7 @@ export const barChartOptions = (searchData, theme, isDarkMode) => {
                 return (
                   (Math.ceil(val / 1000) * 1000) / 1000 +
                   "k " +
-                  searchData[0]?.salary_currency
+                  data[0]?.salary_currency
                 );
               },
               offsetX: -13,
@@ -145,8 +142,22 @@ export const barChartOptions = (searchData, theme, isDarkMode) => {
         },
       },
     ],
+    yaxis: {
+      min: 0,
+      labels: {
+        formatter: (val) => {
+          return Math.ceil(val / 1000) * 1000 + " " + data[0]?.salary_currency;
+        },
+        offsetX: -10,
+        style: {
+          colors: "#92929D",
+          fontSize: "14px",
+        },
+      },
+      tickAmount: 2,
+    },
     xaxis: {
-      categories: searchData?.map((item) => item.publisher_name),
+      categories: data?.map((item) => item.publisher_name),
       labels: {
         style: {
           colors: "#92929D",
@@ -161,23 +172,7 @@ export const barChartOptions = (searchData, theme, isDarkMode) => {
         show: false,
       },
     },
-    yaxis: {
-      min: 0,
-      labels: {
-        formatter: (val) => {
-          return (
-            Math.ceil(val / 1000) * 1000 + " " + searchData[0]?.salary_currency
-          );
-        },
-        offsetX: -10,
-        style: {
-          colors: "#92929D",
-          fontSize: "14px",
-        },
-      },
-      tickAmount: 2,
-    },
-    colors: ["#FDDD8C", "#529cf1", "#FFBBD7"],
+    colors: ["#FDDD8C", "#0BAB7C", "#FFBBD7"],
     legend: {
       show: false,
     },
@@ -198,7 +193,7 @@ export const barChartOptions = (searchData, theme, isDarkMode) => {
       },
       y: {
         formatter: function (val) {
-          return val + " " + searchData[0]?.salary_currency;
+          return val + " " + data[0]?.salary_currency;
         },
       },
     },
@@ -217,4 +212,45 @@ export const barChartOptions = (searchData, theme, isDarkMode) => {
       borderColor: `${!isDarkMode ? "#F5F5F8" : "#21212b"}`,
     },
   };
+};
+
+export const chartSeries = ({ data }) => {
+  return [
+    {
+      name: "Min Salary",
+      data: data?.map((item) =>
+        item.min_salary
+          ? Math.round(
+              item.salary_period === "YEAR"
+                ? item.min_salary / 12
+                : item.min_salary
+            )
+          : 0
+      ),
+    },
+    {
+      name: "Max Salary",
+      data: data?.map((item) =>
+        item.max_salary
+          ? Math.round(
+              item.salary_period === "YEAR"
+                ? item.max_salary / 12
+                : item.max_salary
+            )
+          : 0
+      ),
+    },
+    {
+      name: "Median Salary",
+      data: data?.map((item) =>
+        item.median_salary
+          ? Math.round(
+              item.salary_period === "YEAR"
+                ? item.median_salary / 12
+                : item.median_salary
+            )
+          : 0
+      ),
+    },
+  ];
 };

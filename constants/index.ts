@@ -52,3 +52,18 @@ export const searchPageFilters = [
     filters: ["Employer One", "Employer Two", "Employer Three"],
   },
 ];
+
+export const salaryFields = [
+  {
+    label: "Minimum Salary",
+    color: "bg-yellow-primary",
+  },
+  {
+    label: "Median Salary",
+    color: "bg-primary",
+  },
+  {
+    label: "Maximum Salary",
+    color: "bg-pink-primary",
+  },
+];

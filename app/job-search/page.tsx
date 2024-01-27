@@ -1,9 +1,11 @@
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
 import PageTitle from "@/components/PageTitle";
-import SearchBar from "@/components/search-components/SearchBar";
-import SearchPageFilters from "@/components/search-components/SearchPageFilters";
-import SearchPageJobCard from "@/components/search-components/SearchPageJobCard";
+import {
+  SearchBar,
+  SearchPageFilters,
+  SearchPageJobCard,
+} from "@/components/search-components";
 
 const JobSearch = () => {
   const numberOfJobs = 10;

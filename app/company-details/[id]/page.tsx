@@ -1,6 +1,8 @@
 import PageTitle from "@/components/PageTitle";
-import CompanyDetailsLargeCard from "@/components/company-details-components/CompanyDetailsLargeCard";
-import SimilarCompaniesCard from "@/components/company-details-components/SimilarCompaniesCard";
+import {
+  CompanyDetailsLargeCard,
+  SimilarCompaniesCard,
+} from "@/components/company-details-components";
 
 const CompanyDetails = () => {
   return (
