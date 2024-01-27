@@ -80,21 +80,18 @@ export function formatSalary({
 }
 
 type SingleSalaryProps = {
+  currency: string;
   salary: number;
-  salaryType: "yearly" | "monthly" | string;
+  duration: string;
 };
 
 export function formatSingleSalary({
+  currency,
   salary,
-  salaryType,
+  duration,
 }: SingleSalaryProps): string {
-  const duration = salaryType === "yearly" ? "/ Year" : "/ Month";
-
-  const salaryParts = salary.toString().split("");
-  salaryParts.splice(-3, 0, ",");
-  const formattedSalary = `$${salaryParts.join("")}`;
-
-  return `${formattedSalary} ${duration}`;
+  const salaryRounded = Math.floor(salary);
+  return `${currency} ${salaryRounded}/ ${duration}`;
 }
 
 export function timeSince(date: Date): string {
