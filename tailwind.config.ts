@@ -12,6 +12,7 @@ const config = {
   theme: {
     borderRadius: {
       ten: "10px",
+      full: "9999px",
     },
     container: {
       center: true,

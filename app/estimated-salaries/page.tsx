@@ -90,7 +90,7 @@ const EstimatedSalaries = () => {
               >
                 Job Title
               </label>
-              <div className="bg-natural-2_darkBG-2 flex w-full rounded-[10px] border border-natural-5 px-5 py-3 dark:border-natural-8">
+              <div className="bg-natural-2_darkBG-2 flex w-full rounded-ten border border-natural-5 px-5 py-3 dark:border-natural-8">
                 <input
                   {...register("jobTitle")}
                   type="text"
@@ -113,7 +113,7 @@ const EstimatedSalaries = () => {
                 >
                   Location
                 </label>
-                <div className="bg-natural-2_darkBG-2 flex w-full rounded-[10px] border border-natural-5 px-5 py-3 dark:border-natural-8">
+                <div className="bg-natural-2_darkBG-2 flex w-full rounded-ten border border-natural-5 px-5 py-3 dark:border-natural-8">
                   <input
                     {...register("location")}
                     type="text"
@@ -137,7 +137,7 @@ const EstimatedSalaries = () => {
                 >
                   Radius
                 </label>
-                <div className="bg-natural-2_darkBG-2 flex w-full rounded-[10px] border border-natural-5 px-5 py-3 dark:border-natural-8">
+                <div className="bg-natural-2_darkBG-2 flex w-full rounded-ten border border-natural-5 px-5 py-3 dark:border-natural-8">
                   <input
                     {...register("radius", { valueAsNumber: true })}
                     type="number"
@@ -155,7 +155,7 @@ const EstimatedSalaries = () => {
             </div>
           </form>
         </section>
-        <div className="bg-white_darkBG-2 flex w-full flex-col gap-2.5 rounded-[10px] p-5 md:p-6">
+        <div className="bg-white_darkBG-2 flex w-full flex-col gap-2.5 rounded-ten p-5 md:p-6">
           <p className="semibold-16 md:semibold-22 text-black_white">
             Estimated Salary<span className="light-16 md:light-22"> for </span>
             {graphJobTitle}

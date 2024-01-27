@@ -12,6 +12,7 @@ const nextConfig = {
       "prod.ucwe.capgemini.com",
       "lookaside.fbsbx.com",
       "images.g2crowd.com",
+      "www.nustream.co.uk",
     ],
   },
 };

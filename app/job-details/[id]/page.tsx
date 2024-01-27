@@ -98,7 +98,7 @@ const JobDetails = async ({ params }: { params: { id: string } }) => {
         <PageTitle text="Let’s find your dream job" />
         <section className="flex w-full flex-col justify-between gap-10 lg:flex-row">
           <div className="flex w-full flex-col gap-6">
-            <button className="flex-center regular-13 h-8 w-[4.625rem] gap-1.5 rounded-[10px] bg-natural-2 text-natural-7 dark:bg-darkBG-3">
+            <button className="flex-center regular-13 h-8 w-[4.625rem] gap-1.5 rounded-ten bg-natural-2 text-natural-7 dark:bg-darkBG-3">
               <IoIosArrowBack />
               Back
             </button>

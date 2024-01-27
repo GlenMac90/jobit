@@ -33,7 +33,7 @@ const SearchPageJobCard = () => {
   return (
     <div className="card-styles gap-5 p-5">
       <div className="flex gap-3 md:gap-5">
-        <div className="flex-center bg-natural-3_darkBG-3 h-fit shrink-0 rounded-[10px] p-1.5 md:p-2">
+        <div className="flex-center bg-natural-3_darkBG-3 h-fit shrink-0 rounded-ten p-1.5 md:p-2">
           <Image
             src={image}
             height={34}
@@ -70,7 +70,7 @@ const SearchPageJobCard = () => {
         </div>
         <Link
           href={websiteLink}
-          className="flex-center semibold-13 md:semibold-15 h-9 w-[8.8rem] self-end rounded-[10px] bg-primary text-white md:h-12 md:w-[12.5rem]"
+          className="flex-center semibold-13 md:semibold-15 h-9 w-[8.8rem] self-end rounded-ten bg-primary text-white md:h-12 md:w-[12.5rem]"
         >
           Visit
         </Link>

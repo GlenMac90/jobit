@@ -15,7 +15,7 @@ const CompanyDetailsLargeCard = ({ data }: { data: string }) => {
   } = parsedData[0];
 
   return (
-    <div className="bg-natural-3_darkBG-1 flex w-full flex-col rounded-[10px]">
+    <div className="bg-natural-3_darkBG-1 flex w-full flex-col rounded-ten">
       <div className="relative flex h-[9.375rem] w-full md:h-48">
         <Image
           src="/job-details-background.jpg"
@@ -24,7 +24,7 @@ const CompanyDetailsLargeCard = ({ data }: { data: string }) => {
           alt="background image for job details page"
           className="rounded-t-xl object-cover"
         />
-        <div className="bg-natural-3_natural-8 absolute bottom-0 left-2.5 flex translate-y-6 rounded-[10px] p-1 md:left-5 md:translate-y-12">
+        <div className="bg-natural-3_natural-8 absolute bottom-0 left-2.5 flex translate-y-6 rounded-ten p-1 md:left-5 md:translate-y-12">
           <Image
             src={image}
             height={46}

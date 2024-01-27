@@ -14,7 +14,7 @@ const SmallCardHeadingAndTags = ({
   return (
     <div className="flex gap-5">
       <div
-        className={`${dark ? "bg-natural-2_darkBG-2" : "bg-natural-2_darkBG-3"}  flex size-[2.875rem] shrink-0 rounded-lg p-2 md:size-[4rem] md:rounded-[10px] md:p-2.5`}
+        className={`${dark ? "bg-natural-2_darkBG-2" : "bg-natural-2_darkBG-3"}  flex size-[2.875rem] shrink-0 rounded-lg p-2 md:size-[4rem] md:rounded-ten md:p-2.5`}
       >
         <Image
           src={image || "/jobit-logo.svg"}
