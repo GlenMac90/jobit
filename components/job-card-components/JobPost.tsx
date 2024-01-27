@@ -1,12 +1,13 @@
 import Image from "next/image";
+import Link from "next/link";
 
-import { dummyJobData } from "@/utils/dummy-data";
 import { daysLeftUntil, formatSalary } from "@/utils";
 import FormattedText from "../FormattedText";
 import SmallCardHeadingAndTags from "../SmallCardHeadingAndTags";
 
-const JobPost = () => {
+const JobPost = ({ data }: { data: any }) => {
   const {
+    id,
     jobTitle,
     image,
     jobDescription,
@@ -16,8 +17,8 @@ const JobPost = () => {
     jobType,
     numberOfApplicants,
     dateOfDeadline,
-    techTags,
-  } = dummyJobData;
+    jobScore,
+  } = data;
 
   const formattedDate = daysLeftUntil(dateOfDeadline);
   const { duration, salary } = formatSalary({
@@ -26,15 +27,15 @@ const JobPost = () => {
     salaryType,
   });
 
+  const shortenedJobDescription = jobDescription.slice(0, 200);
+  const formattedScore = `${(jobScore * 100).toFixed(1).toString()}%`;
+  const formattedJobType = jobType.toLowerCase();
+
   return (
-    <div className="card-styles gap-5 p-5 md:gap-6">
-      <SmallCardHeadingAndTags
-        image={image}
-        jobTitle={jobTitle}
-        techTags={techTags}
-      />
+    <div className="card-styles justify-between gap-5 p-5 md:gap-6">
+      <SmallCardHeadingAndTags image={image} jobTitle={jobTitle} />
       <p className="regular-15 md:regular-16 text-natural-7">
-        {jobDescription}
+        {shortenedJobDescription}
       </p>
       <div className="hide-scrollbar relative flex gap-1 overflow-auto md:gap-3">
         <div className="bg-natural-3_darkBG-3 flex shrink-0 gap-2 rounded-md px-2.5 py-1">
@@ -44,8 +45,8 @@ const JobPost = () => {
             width={18}
             alt="icon to display type of work hours for job"
           />
-          <span className="regular-13 md:regular-14 whitespace-nowrap text-natural-6">
-            {jobType}
+          <span className="regular-13 md:regular-14 whitespace-nowrap capitalize text-natural-6">
+            {formattedJobType}
           </span>
         </div>
         <div className="bg-natural-3_darkBG-3 flex shrink-0 gap-2 rounded-md px-2.5 py-1">
@@ -72,10 +73,21 @@ const JobPost = () => {
         </div>
       </div>
       <div className="flex w-full items-center justify-between">
-        <FormattedText leftText={salary} rightText={`/${duration}`} />
-        <button className="medium-15 rounded-[10px] bg-primary px-3.5 py-2 text-white md:py-3">
+        {minimumSalary && maximumSalary && salaryType ? (
+          <FormattedText leftText={salary} rightText={`/${duration}`} />
+        ) : jobScore ? (
+          <FormattedText
+            leftText="Quality Score: "
+            rightText={formattedScore}
+            reverse
+          />
+        ) : null}
+        <Link
+          href={`/job-details/${id}`}
+          className="medium-15 rounded-[10px] bg-primary px-3.5 py-2 text-white md:py-3"
+        >
           Visit Now
-        </button>
+        </Link>
       </div>
     </div>
   );

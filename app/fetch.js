@@ -254,3 +254,39 @@ export const chartSeries = ({ data }) => {
     },
   ];
 };
+
+export const fetchJobs = async () => {
+  const baseSearch = "web developer in london";
+  const url = `${rapidAPIBaseUrl}search?query=${encodeURIComponent(baseSearch)}`;
+  try {
+    const response = await fetch(url, rapidAPIOptions);
+    const { data } = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchCompanyDetails = async () => {
+  const baseSearch = "web developer in london";
+  const url = `${rapidAPIBaseUrl}search-filters?query=${encodeURIComponent(baseSearch)}`;
+  try {
+    const response = await fetch(url, rapidAPIOptions);
+    const { data } = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchJobLists = async () => {
+  const baseSearch = "web developer in london";
+  const url = `${rapidAPIBaseUrl}search?query=${encodeURIComponent(baseSearch)}&page=2`;
+  try {
+    const response = await fetch(url, rapidAPIOptions);
+    const { data } = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};

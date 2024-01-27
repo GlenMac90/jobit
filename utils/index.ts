@@ -65,7 +65,7 @@ export function formatSalary({
   maximumSalary,
   salaryType,
 }: SalaryProps): SalaryOutput {
-  const divisor = salaryType === "yearly" ? 1000 : 1;
+  const divisor = salaryType === "YEAR" ? 1000 : 1;
   const duration = salaryType === "yearly" ? "year" : "month";
 
   const formattedMin = (minimumSalary / divisor).toFixed(0);

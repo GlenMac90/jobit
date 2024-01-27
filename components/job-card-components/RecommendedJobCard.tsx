@@ -1,53 +1,78 @@
 import Image from "next/image";
+import Link from "next/link";
 
-import { dummyRecommendedCompany } from "@/utils/dummy-data";
 import Dot from "../Dot";
 
-const RecommendedJobCard = () => {
+export interface RecommendedJobCardProps {
+  id: string;
+  employerName: string;
+  jobTitle: string;
+  employerLogo: string;
+  jobType: string;
+  jobCity: string;
+  jobCountry: string;
+  maxSalary: number;
+  minSalary: number;
+  salaryPeriod: string;
+}
+
+const RecommendedJobCard = ({ data }: { data: any }) => {
   const {
+    id,
+    employerName,
     jobTitle,
-    image,
-    companyName,
-    city,
-    country,
+    employerLogo,
     jobType,
-    maxHourlySalary,
-    minHourlySalary,
-  } = dummyRecommendedCompany;
+    jobCity,
+    jobCountry,
+    maxSalary,
+    minSalary,
+    salaryPeriod,
+  } = data;
+
+  const minimumSalary =
+    minSalary >= 1000 ? `${(minSalary / 1000).toFixed(0)}k` : `${minSalary}`;
+  const maximumSalary =
+    maxSalary >= 1000 ? `${(maxSalary / 1000).toFixed(0)}k` : `${maxSalary}`;
 
   return (
-    <div className="bg-natural-3_darkBG-3 flex w-full justify-between p-3.5">
-      <div className="flex items-center gap-3">
+    <Link
+      href={`/job-details/${id}`}
+      className="bg-natural-3_darkBG-3 flex w-full justify-between gap-2 p-3.5"
+    >
+      <div className="flex items-center gap-3 truncate">
         <Image
-          src={image}
+          src={employerLogo || "/jobit-logo.svg"}
           height={36}
           width={36}
-          alt={`Company logo for ${companyName}`}
+          alt={`Company logo for ${employerName}`}
           className="size-[1.875rem] shrink-0 sm:size-[2.25rem]"
         />
         <div className="flex w-full flex-col truncate">
-          <span className="text-black_white regular-13 sm:regular-16 truncate">
+          <span className="text-black_white regular-13 sm:regular-16 line-clamp-1">
             {jobTitle}
           </span>
-          <div className="regular-13 sm:regular-14 flex gap-1 truncate text-natural-6">
-            <span>{companyName}</span>
+          <div className="regular-13 sm:regular-14 line-clamp-1 flex gap-1 text-natural-6">
+            <span>{employerName}</span>
             <Dot />
             <span>
-              {city}, {country}
+              {jobCity}, {jobCountry}
             </span>
           </div>
         </div>
       </div>
-      <div className="flex h-full flex-col justify-between">
-        <p className="text-black_white regular-13 sm:regular-14 whitespace-nowrap">
-          ${minHourlySalary}-{maxHourlySalary}
-          <span className="regular-14 text-natural-6"> / Hr</span>
-        </p>
-        <span className="regular-13 sm:regular-14 text-end text-natural-6">
-          {jobType}
-        </span>
-      </div>
-    </div>
+      {minSalary && maxSalary && salaryPeriod && (
+        <div className="flex h-full flex-col justify-between">
+          <p className="text-black_white regular-13 sm:regular-14 whitespace-nowrap">
+            {minimumSalary}-{maximumSalary}
+            <span className="regular-14 text-natural-6"> / {salaryPeriod}</span>
+          </p>
+          <span className="regular-13 sm:regular-14 text-end text-natural-6">
+            {jobType}
+          </span>
+        </div>
+      )}
+    </Link>
   );
 };
 
