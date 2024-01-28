@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import { redirect } from "next/navigation";
 import { fetchPaginatedJob } from "../fetch";
 const SearchPageForm = dynamic(
   () => import("@/components/search-components/SearchPageForm"),
@@ -9,6 +10,8 @@ const JobSearch = async () => {
   const queryString = "web developer in london";
   const jobData = await fetchPaginatedJob({ queryString, page: 1 });
   const stringifiedJobData = JSON.stringify(jobData);
+
+  if (!jobData) redirect("/");
 
   return (
     <div className="flex flex-1 flex-col items-center px-6 py-7 md:py-12">
