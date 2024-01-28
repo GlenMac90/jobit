@@ -2,6 +2,7 @@ import { FeaturedCompaniesCard } from ".";
 import { FeaturedCompaniesCardProps } from "./FeaturedCompaniesCard";
 
 const FeaturedCompaniesCardList = ({ data }: { data: string }) => {
+  if (!data) return null;
   const parsedData = JSON.parse(data);
   const reducedList = parsedData.employers.slice(0, 3);
 

@@ -2,6 +2,7 @@ import { RecommendedJobCard } from ".";
 import { RecommendedJobCardProps } from "./RecommendedJobCard";
 
 const RecommendedList = ({ data }: { data: string }) => {
+  if (!data) return null;
   const parsedData = JSON.parse(data);
   const mappedJobListData = parsedData.slice(0, 8).map((job: any) => ({
     id: job.job_id,

@@ -20,8 +20,9 @@ interface JobDataProps {
 }
 
 const JobCardList = ({ data }: { data: string }) => {
-  const parsedData = JSON.parse(data);
   const [showMore, setShowMore] = useState(false);
+  if (!data) return null;
+  const parsedData = JSON.parse(data);
 
   const mappedJobData = parsedData.map((job: any) => ({
     id: job.job_id,
