@@ -1,8 +1,18 @@
 import PageTitle from "@/components/PageTitle";
 import { fetchCompanyDetails, fetchJobLists, fetchJobs } from "./fetch";
-import JobCardList from "@/components/job-card-components/JobCardList";
-import FeaturedCompaniesCardList from "@/components/job-card-components/FeaturedCompaniesCardList";
-import RecommendedList from "@/components/job-card-components/RecommendedList";
+import dynamic from "next/dynamic";
+const JobCardList = dynamic(
+  () => import("@/components/job-card-components/JobCardList"),
+  { ssr: false }
+);
+const FeaturedCompaniesCardList = dynamic(
+  () => import("@/components/job-card-components/FeaturedCompaniesCardList"),
+  { ssr: false }
+);
+const RecommendedList = dynamic(
+  () => import("@/components/job-card-components/RecommendedList"),
+  { ssr: false }
+);
 
 export default async function Home() {
   const jobData = await fetchJobs();
