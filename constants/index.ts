@@ -23,32 +23,69 @@ export const jobTypes = [
 
 export const searchPageFilters = [
   {
+    label: "employmentType",
     heading: "Employment Type",
-    filters: ["Full Time", "Part Time", "Contract", "Internship", "Temporary"],
-  },
-  {
-    heading: "Job Requirements",
     filters: [
-      "No Degree",
-      "No Experience",
-      "2 Years Of Experience",
-      "3+ Years Of Experience",
+      {
+        label: "Full Time",
+        filter: "FULLTIME",
+      },
+      {
+        label: "Part Time",
+        filter: "PARTTIME",
+      },
+      {
+        label: "Contract",
+        filter: "CONTRACTOR",
+      },
+      {
+        label: "Internship",
+        filter: "INTERN",
+      },
     ],
   },
   {
+    label: "jobRequirements",
+    heading: "Job Requirements",
+    filters: [
+      {
+        label: "No Degree",
+        filter: "no_degree",
+      },
+      {
+        label: "No Experience",
+        filter: "no_experience",
+      },
+      {
+        label: "2 Years Of Experience",
+        filter: "under_3_years_experience",
+      },
+      {
+        label: "3+ Years Of Experience",
+        filter: "more_than_3_years_experience",
+      },
+    ],
+  },
+  {
+    label: "datePosted",
     heading: "Date Posted",
-    filters: ["Past Day", "Past 3 Days", "Past Week", "Past Month"],
-  },
-  {
-    heading: "Job Titles",
-    filters: ["Job One", "Job Two", "Job Three"],
-  },
-  {
-    heading: "Company Types",
-    filters: ["Company One", "Company Two", "Company Three"],
-  },
-  {
-    heading: "Employers",
-    filters: ["Employer One", "Employer Two", "Employer Three"],
+    filters: [
+      {
+        label: "Past Day",
+        filter: "today",
+      },
+      {
+        label: "Past 3 Days",
+        filter: "3days",
+      },
+      {
+        label: "Past Week",
+        filter: "week",
+      },
+      {
+        label: "Past Month",
+        filter: "month",
+      },
+    ],
   },
 ];
