@@ -13,6 +13,7 @@ const config = {
     borderRadius: {
       ten: "10px",
       full: "9999px",
+      xl: "1rem",
     },
     container: {
       center: true,
