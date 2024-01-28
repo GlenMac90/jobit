@@ -29,7 +29,7 @@ const SearchPageForm = ({ data }: { data: string }) => {
       const stringifiedJobData = jobData.map((job: any) => JSON.stringify(job));
       setJobList(stringifiedJobData);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
