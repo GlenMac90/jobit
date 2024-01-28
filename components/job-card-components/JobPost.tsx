@@ -84,7 +84,7 @@ const JobPost = ({ data }: { data: any }) => {
         ) : null}
         <Link
           href={`/job-details/${id}`}
-          className="medium-15 rounded-[10px] bg-primary px-3.5 py-2 text-white md:py-3"
+          className="medium-15 rounded-ten bg-primary px-3.5 py-2 text-white md:py-3"
         >
           Visit Now
         </Link>

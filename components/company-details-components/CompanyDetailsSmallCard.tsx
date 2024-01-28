@@ -26,7 +26,7 @@ const CompanyDetailsSmallCard = ({ data }: any) => {
   const salaryDataPresent = minimumSalary && maximumSalary && salaryType;
 
   return (
-    <div className="bg-white_darkBG-3 flex flex-col gap-5 rounded-[10px] p-5 shadow-lg">
+    <div className="bg-white_darkBG-3 flex flex-col gap-5 rounded-ten p-5 shadow-lg">
       <SmallCardHeadingAndTags image={image} jobTitle={jobTitle} dark />
       <div className="light-14 light-16 text-natural-7_natural-6">
         {shortenedDescription}
@@ -39,7 +39,7 @@ const CompanyDetailsSmallCard = ({ data }: any) => {
         )}
         <Link
           href={`/job-details/${id}`}
-          className="medium-13 md:medium-15 rounded-[10px] bg-primary/10 px-3.5 py-2 text-primary"
+          className="medium-13 md:medium-15 rounded-ten bg-primary/10 px-3.5 py-2 text-primary"
         >
           Visit
         </Link>

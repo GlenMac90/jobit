@@ -13,11 +13,10 @@ const schema = z.object({
 
 type FormFields = z.infer<typeof schema>;
 
-const SearchBar = () => {
+const SearchBar = ({ setQueryString }: { setQueryString: any }) => {
   const {
     register,
     handleSubmit,
-    setError,
     formState: { errors, isSubmitting },
   } = useForm<FormFields>({
     defaultValues: {
@@ -26,15 +25,9 @@ const SearchBar = () => {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      throw new Error("Something went wrong");
-    } catch (error) {
-      setError("root", {
-        message: "This is invalid",
-      });
-    }
+  const onSubmit: SubmitHandler<FormFields> = (data) => {
+    const { jobTitle, location, jobType } = data;
+    setQueryString(`${jobTitle} in ${location} as ${jobType}`);
   };
 
   const isError = Object.keys(errors).length > 0;
@@ -117,7 +110,7 @@ const SearchBar = () => {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="flex-center mt-5 h-12 w-full shrink-0 rounded-[10px] bg-primary text-white lg:ml-4 lg:mt-0 lg:w-28"
+        className="flex-center mt-5 h-12 w-full shrink-0 rounded-ten bg-primary text-white lg:ml-4 lg:mt-0 lg:w-28"
       >
         {isSubmitting ? "Searching..." : "Find Jobs"}
       </button>

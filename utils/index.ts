@@ -116,7 +116,7 @@ export function timeSince(date: Date): string {
   }
 }
 
-export function daysUntil(date: Date): string {
+export function daysUntil(date: Date): string | null {
   const now = new Date();
   now.setHours(0, 0, 0, 0);
 
@@ -129,7 +129,7 @@ export function daysUntil(date: Date): string {
   const daysDiff = Math.floor(timeDiff / msPerDay);
 
   if (daysDiff < 0) {
-    return "0 days left";
+    return null;
   }
 
   return `${daysDiff} days left`;

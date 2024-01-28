@@ -36,7 +36,7 @@ const FeaturedCompaniesCard = ({
       </div>
       <Link
         href={`/company-details/${id}`}
-        className="flex-center semibold-13 bg-natural-2_darkBG-3 h-12 w-full rounded-[10px] text-natural-6"
+        className="flex-center semibold-13 bg-natural-2_darkBG-3 h-12 w-full rounded-ten text-natural-6"
       >
         See All
       </Link>

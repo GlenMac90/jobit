@@ -30,8 +30,8 @@ const RecentJobsList = ({ data }: { data: string }) => {
     setShowMore(false);
     const filteredData = parsedData.filter(
       (job: any) =>
-        job.job_title.includes(data.inputText) ||
-        job.job_description.includes(data.inputText)
+        job.job_title.toLowerCase().includes(data.inputText.toLowerCase()) ||
+        job.job_description.toLowerCase().includes(data.inputText.toLowerCase())
     );
     setJobList(filteredData);
   };
@@ -53,7 +53,7 @@ const RecentJobsList = ({ data }: { data: string }) => {
   }, [text]);
 
   return (
-    <section className="bg-white_darkBG-2 mt-9 flex w-full flex-col rounded-[10px] px-4 py-5 md:px-5 md:py-7">
+    <section className="bg-white_darkBG-2 mt-9 flex w-full flex-col rounded-ten px-4 py-5 md:px-5 md:py-7">
       <form
         className="bg-natural-3_darkBG-3 flex w-full gap-4 rounded-2xl px-4 py-2 lg:w-1/2"
         onSubmit={handleSubmit(onSubmit)}
@@ -73,7 +73,7 @@ const RecentJobsList = ({ data }: { data: string }) => {
           autoComplete="off"
         />
         <button
-          className="medium-13 md:medium-15 rounded-[10px] bg-primary px-3.5 py-2 text-white"
+          className="medium-13 md:medium-15 rounded-ten bg-primary px-3.5 py-2 text-white"
           type="submit"
           disabled={isSubmitting}
         >
@@ -98,7 +98,7 @@ const RecentJobsList = ({ data }: { data: string }) => {
               ))}
       </div>
       <button
-        className="medium-15 mt-10 flex w-fit self-center rounded-[10px] border border-natural-5 px-3.5 py-2 text-natural-6 dark:border-none dark:bg-darkBG-3"
+        className="medium-15 mt-10 flex w-fit self-center rounded-ten border border-natural-5 px-3.5 py-2 text-natural-6 dark:border-none dark:bg-darkBG-3"
         onClick={() => setShowMore(!showMore)}
       >
         {showMore ? "Show Less" : "Show More"}

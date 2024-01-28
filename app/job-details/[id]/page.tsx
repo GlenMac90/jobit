@@ -46,25 +46,20 @@ const JobDetails = async ({ params }: { params: { id: string } }) => {
   const { Qualifications: qualifications, Responsibilities: responsibilities } =
     jobHighlights;
 
-  const {
-    median_salary: offerSalary,
-    salary_period: salaryPeriod,
-    salary_currency: currency,
-    location,
-  } = estimateSalaries[0];
+  const { location } = estimateSalaries?.[0] ?? [];
 
   const largeCardData = {
     jobTitle,
     image,
     companyName,
-    location,
+    location: estimateSalaries?.[0]?.location ?? null,
     dateAdded,
     jobDescription,
     workLevel: "Senior",
     jobType,
-    currency,
-    offerSalary,
-    salaryPeriod,
+    currency: estimateSalaries?.[0]?.salary_currency ?? null,
+    offerSalary: estimateSalaries?.[0]?.median_salary ?? null,
+    salaryPeriod: estimateSalaries?.[0]?.salary_period ?? null,
     responsibilities,
     qualifications,
     websiteLink,
@@ -103,7 +98,7 @@ const JobDetails = async ({ params }: { params: { id: string } }) => {
         <PageTitle text="Let’s find your dream job" />
         <section className="flex w-full flex-col justify-between gap-10 lg:flex-row">
           <div className="flex w-full flex-col gap-6">
-            <button className="flex-center regular-13 h-8 w-[4.625rem] gap-1.5 rounded-[10px] bg-natural-2 text-natural-7 dark:bg-darkBG-3">
+            <button className="flex-center regular-13 h-8 w-[4.625rem] gap-1.5 rounded-ten bg-natural-2 text-natural-7 dark:bg-darkBG-3">
               <IoIosArrowBack />
               Back
             </button>

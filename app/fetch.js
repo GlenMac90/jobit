@@ -267,6 +267,17 @@ export const fetchJobs = async () => {
   }
 };
 
+export const fetchPaginatedJob = async ({ queryString, page }) => {
+  const url = `${rapidAPIBaseUrl}search?query=${queryString}&page=${page}`;
+  try {
+    const response = await fetch(url, rapidAPIOptions);
+    const { data } = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const fetchCompanyDetails = async () => {
   const baseSearch = "web developer in london";
   const url = `${rapidAPIBaseUrl}search-filters?query=${encodeURIComponent(baseSearch)}`;

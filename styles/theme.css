@@ -212,7 +212,7 @@
   }
 
   .card-styles {
-    @apply bg-white_darkBG-2 flex w-full flex-col rounded-[10px] shadow;
+    @apply bg-white_darkBG-2 flex w-full flex-col rounded-ten shadow;
   }
 
   .badge-styles {

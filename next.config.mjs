@@ -12,6 +12,11 @@ const nextConfig = {
       "prod.ucwe.capgemini.com",
       "lookaside.fbsbx.com",
       "images.g2crowd.com",
+      "www.nustream.co.uk",
+      "japan.plugandplaytechcenter.com",
+      "sightcall.nyc3.cdn.digitaloceanspaces.com",
+      "www.thetrainline.com",
+      "res.cloudinary.com",
     ],
   },
 };

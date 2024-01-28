@@ -23,12 +23,16 @@ const JobDetailsLargeCard = ({ data }: { data: any }) => {
     websiteLink,
   } = data;
 
+  const formattedJobType = jobType.toLowerCase();
   const formattedDate = timeSince(dateAdded);
-  const formattedSalary = formatSingleSalary({
-    currency,
-    salary: offerSalary,
-    duration: salaryPeriod,
-  });
+  const formattedSalary =
+    currency && offerSalary && salaryPeriod
+      ? formatSingleSalary({
+          currency,
+          salary: offerSalary,
+          duration: salaryPeriod,
+        })
+      : "Not Specified";
 
   const jobInfo = [
     {
@@ -41,7 +45,7 @@ const JobDetailsLargeCard = ({ data }: { data: any }) => {
     },
     {
       label: "Employment Type",
-      value: `${jobType} Jobs`,
+      value: `${formattedJobType} Jobs`,
     },
     {
       label: "Offer Salary",
@@ -75,7 +79,7 @@ const JobDetailsLargeCard = ({ data }: { data: any }) => {
           alt="background image for job details page"
           className="rounded-t-xl object-cover"
         />
-        <div className="bg-natural-3_natural-8 absolute bottom-0 left-2.5 flex translate-y-6 rounded-[10px] p-1 md:left-5 md:translate-y-12">
+        <div className="bg-natural-3_natural-8 absolute bottom-0 left-2.5 flex translate-y-6 rounded-ten p-1 md:left-5 md:translate-y-12">
           <Image
             src={image || "/jobit-logo.svg"}
             height={46}
@@ -97,18 +101,18 @@ const JobDetailsLargeCard = ({ data }: { data: any }) => {
           />
           <Link
             href={websiteLink}
-            className="flex-center medium-15 hidden h-11 w-[7.4375rem] rounded-[10px] bg-primary text-white sm:flex"
+            className="flex-center medium-15 hidden h-11 w-[7.4375rem] rounded-ten bg-primary text-white sm:flex"
           >
             Apply Now
           </Link>
         </div>
-        <div className="bg-natural-3_darkBG-3 mt-7 grid grid-cols-2 justify-between gap-y-3 rounded-[10px] p-2.5 sm:flex md:mt-9 md:rounded-[20px] md:px-6 md:py-4">
+        <div className="bg-natural-3_darkBG-3 mt-7 grid grid-cols-2 justify-between gap-y-3 rounded-ten p-2.5 sm:flex md:mt-9 md:rounded-[20px] md:px-6 md:py-4">
           {jobInfo.map((info) => (
             <div key={info.label} className="flex flex-col">
               <label className="medium-13 md:medium-14 text-natural-6">
                 {info.label}
               </label>
-              <p className="medium-14 medium-16 text-natural-8_white">
+              <p className="medium-14 medium-16 text-natural-8_white capitalize">
                 {info.value}
               </p>
             </div>
@@ -116,7 +120,7 @@ const JobDetailsLargeCard = ({ data }: { data: any }) => {
         </div>
         <Link
           href={websiteLink}
-          className="flex-center medium-15 mt-3.5 h-11 w-[7.4375rem] rounded-[10px] bg-primary text-white sm:hidden"
+          className="flex-center medium-15 mt-3.5 h-11 w-[7.4375rem] rounded-ten bg-primary text-white sm:hidden"
         >
           Apply Now
         </Link>

@@ -42,7 +42,7 @@ const SimilarJobCard = ({ data }: { data: JobSummary }) => {
             height={48}
             width={48}
             alt={`Company Logo for ${employerName}`}
-            className="shrink-0"
+            className="shrink-0 object-contain"
           />
           <div className="flex h-full flex-col justify-between">
             <span className="semibold-16 md:semibold-18 text-black_white line-clamp-1 w-full">
@@ -54,9 +54,8 @@ const SimilarJobCard = ({ data }: { data: JobSummary }) => {
           </div>
         </div>
         {jobMaxSalary && jobSalaryCurrency && jobSalaryPeriod && (
-          <p className="regular-14 text-black_white">
-            {jobSalaryCurrency}
-            {jobMaxSalary}
+          <p className="regular-14 text-black_white text-right">
+            {jobSalaryCurrency} {jobMaxSalary}
             <span className="light-14 text-natural-6">
               {" "}
               / {jobSalaryPeriod}
