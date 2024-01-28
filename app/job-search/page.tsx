@@ -1,5 +1,9 @@
+import dynamic from "next/dynamic";
 import { fetchPaginatedJob } from "../fetch";
-import SearchPageForm from "@/components/search-components/SearchPageForm";
+const SearchPageForm = dynamic(
+  () => import("@/components/search-components/SearchPageForm"),
+  { ssr: false }
+);
 
 const JobSearch = async () => {
   const queryString = "web developer in london";
