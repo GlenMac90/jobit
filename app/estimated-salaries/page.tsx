@@ -7,8 +7,12 @@ import { z } from "zod";
 
 import { initialData, rapidAPIBaseUrl, rapidAPIOptions } from "../fetch";
 import { SalaryData } from "@/types";
-import EstimateSalaryBarChart from "@/components/EstimateSalaryBarChart";
 import PageTitle from "@/components/PageTitle";
+import dynamic from "next/dynamic";
+const EstimateSalaryBarChart = dynamic(
+  () => import("@/components/EstimateSalaryBarChart"),
+  { ssr: false }
+);
 
 const salaryFields = [
   {
