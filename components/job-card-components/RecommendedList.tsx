@@ -22,7 +22,7 @@ const RecommendedList = ({ data }: { data: string }) => {
       <div className="flex w-full items-center justify-between">
         <h3 className="semibold-22 text-black_white">Recommended for you</h3>
       </div>
-      <section className="card-styles gap-3 p-3 shadow sm:p-5">
+      <section className="card-styles gap-3 p-3 shadow hover:shadow-xl sm:p-5">
         {mappedJobListData.map((job: RecommendedJobCardProps) => (
           <RecommendedJobCard key={job.id} data={job} />
         ))}

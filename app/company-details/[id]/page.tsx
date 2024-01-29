@@ -28,9 +28,7 @@ const CompanyDetails = async ({
             <h3 className="text-black_white semibold-22">Similar Companies</h3>
             <ul className="flex w-full flex-col gap-5">
               {employersList.map((employer: string) => (
-                <li key={employer}>
-                  <SimilarCompaniesCard name={employer} />
-                </li>
+                <SimilarCompaniesCard key={employer} name={employer} />
               ))}
             </ul>
           </div>

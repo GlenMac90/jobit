@@ -17,7 +17,7 @@ const FeaturedCompaniesCard = ({
   const vacanciesText = count > 1 ? "vacancies" : "vacancy";
 
   return (
-    <div className="card-styles justify-between gap-6 p-5">
+    <div className="card-styles justify-between gap-6 p-5 hover:shadow-xl">
       <div className="flex gap-2.5">
         <h2 className="text-black_white semibold-18">{name}</h2>
       </div>
@@ -36,7 +36,7 @@ const FeaturedCompaniesCard = ({
       </div>
       <Link
         href={`/company-details/${id}`}
-        className="flex-center semibold-13 bg-natural-2_darkBG-3 h-12 w-full rounded-ten text-natural-6"
+        className="flex-center semibold-13 bg-natural-2_darkBG-3 h-12 w-full rounded-ten text-natural-6 hover:bg-natural-3 hover:dark:bg-natural-8"
       >
         See All
       </Link>

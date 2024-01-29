@@ -32,12 +32,12 @@ const JobPost = ({ data }: { data: any }) => {
   const formattedJobType = jobType.toLowerCase();
 
   return (
-    <div className="card-styles justify-between gap-5 p-5 md:gap-6">
+    <div className="card-styles justify-between gap-5 p-5 hover:shadow-xl md:gap-6">
       <SmallCardHeadingAndTags image={image} jobTitle={jobTitle} />
       <p className="regular-15 md:regular-16 text-natural-7">
         {shortenedJobDescription}
       </p>
-      <div className="hide-scrollbar relative flex gap-1 overflow-auto md:gap-3">
+      <div className="hide-scrollbar relative flex cursor-default gap-1 overflow-auto md:gap-3">
         <div className="bg-natural-3_darkBG-3 flex shrink-0 gap-2 rounded-md px-2.5 py-1">
           <Image
             src="/job-type.svg"

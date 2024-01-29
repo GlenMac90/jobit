@@ -1,4 +1,5 @@
 import { IoIosArrowBack } from "react-icons/io";
+import Link from "next/link";
 
 import PageTitle from "@/components/PageTitle";
 import {
@@ -92,26 +93,34 @@ const JobDetails = async ({ params }: { params: { id: string } }) => {
     jobId: job.job_id,
   }));
 
+  const isJobSummaries = jobSummaries.length > 0;
+  const maxWidth = isJobSummaries ? "max-w-[80rem]" : "max-w-[60rem]";
+
   return (
     <div className="flex flex-1 flex-col items-center px-6 py-7 md:py-12">
-      <div className="flex w-full max-w-[80rem] flex-col gap-10">
+      <div className={`${maxWidth} flex w-full flex-col gap-10`}>
         <PageTitle text="Let’s find your dream job" />
         <section className="flex w-full flex-col justify-between gap-10 lg:flex-row">
           <div className="flex w-full flex-col gap-6">
-            <button className="flex-center regular-13 h-8 w-[4.625rem] gap-1.5 rounded-ten bg-natural-2 text-natural-7 dark:bg-darkBG-3">
+            <Link
+              href={"/"}
+              className="flex-center regular-13 h-8 w-[4.625rem] gap-1.5 rounded-ten bg-natural-2 text-natural-7 hover:bg-primary hover:text-white dark:bg-darkBG-3 dark:hover:bg-primary"
+            >
               <IoIosArrowBack />
               Back
-            </button>
+            </Link>
             <JobDetailsLargeCard data={largeCardData} />
           </div>
-          <div className="flex w-full flex-col gap-8 lg:max-w-[23.7rem]">
-            <p className="label-styles">Similar Jobs</p>
-            <div className="flex w-full flex-col gap-4">
-              {jobSummaries.map((job) => (
-                <SimilarJobCard key={job.jobId} data={job} />
-              ))}
+          {isJobSummaries && (
+            <div className="flex w-full flex-col gap-8 lg:max-w-[23.7rem]">
+              <p className="label-styles">Similar Jobs</p>
+              <div className="flex w-full flex-col gap-4">
+                {jobSummaries.map((job) => (
+                  <SimilarJobCard key={job.jobId} data={job} />
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </section>
       </div>
     </div>

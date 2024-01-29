@@ -45,7 +45,7 @@ const JobCardList = ({ data }: { data: string }) => {
       <div className="flex w-full items-center justify-between">
         <h3 className="semibold-22 text-black_white">Latest Job Posts</h3>
         <button
-          className="flex items-center gap-2 rounded-ten border border-natural-2 px-2.5 py-2 dark:border-natural-8"
+          className="button-styles flex items-center gap-2 rounded-ten border border-natural-2 px-2.5 py-2 dark:border-natural-8"
           onClick={() => setShowMore(!showMore)}
         >
           <span className="text-natural-7">

@@ -39,7 +39,7 @@ const CompanyDetailsSmallCard = ({ data }: any) => {
         )}
         <Link
           href={`/job-details/${id}`}
-          className="medium-13 md:medium-15 rounded-ten bg-primary/10 px-3.5 py-2 text-primary"
+          className="medium-13 md:medium-15 rounded-ten bg-primary/10 px-3.5 py-2 text-primary hover:bg-primary hover:text-white"
         >
           Visit
         </Link>
