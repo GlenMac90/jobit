@@ -226,4 +226,8 @@
   .label-styles {
     @apply medium-16 md:medium-18 text-black_white;
   }
+
+  .button-styles {
+    @apply hover:bg-natural-2 hover:dark:bg-darkBG-3;
+  }
 }

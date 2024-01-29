@@ -21,6 +21,7 @@ const SmallCardHeadingAndTags = ({
           alt={jobTitle}
           width={80}
           height={80}
+          className="object-contain"
         />
       </div>
       <div className="flex flex-col justify-between gap-3 overflow-x-hidden">

@@ -5,7 +5,6 @@ import RecentJobsList from "./RecentJobsList";
 
 const CompanyDetailsLargeCard = ({ data }: { data: string }) => {
   const parsedData = JSON.parse(data);
-  console.log(parsedData);
   const {
     employer_logo: image,
     employer_name: companyName,

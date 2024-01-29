@@ -41,7 +41,7 @@ const RecommendedJobCard = ({ data }: { data: any }) => {
   return (
     <Link
       href={`/job-details/${id}`}
-      className="bg-natural-3_darkBG-3 flex w-full justify-between gap-2 p-3.5"
+      className="bg-natural-3_darkBG-3 hover:bg-natural-2_darkBG-2 flex w-full justify-between gap-2 rounded-ten p-3.5"
     >
       <div className="flex items-center gap-3 truncate">
         <Image

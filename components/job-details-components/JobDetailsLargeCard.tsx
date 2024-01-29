@@ -70,7 +70,7 @@ const JobDetailsLargeCard = ({ data }: { data: any }) => {
   ];
 
   return (
-    <div className="card-styles flex w-full p-5">
+    <div className="card-styles flex w-full self-center p-5">
       <div className="relative flex h-[9.375rem] w-full md:h-48">
         <Image
           src="/job-details-background.jpg"
@@ -85,7 +85,7 @@ const JobDetailsLargeCard = ({ data }: { data: any }) => {
             height={46}
             width={46}
             alt={`company logo for ${companyName}`}
-            className="size-[3rem] shrink-0 rounded-md object-cover md:size-[4rem]"
+            className="size-[3rem] shrink-0 rounded-md object-contain md:size-[4rem]"
           />
         </div>
       </div>

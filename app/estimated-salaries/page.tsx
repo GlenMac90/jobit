@@ -4,6 +4,7 @@ import { KeyboardEvent, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
+import { useToast } from "@/components/ui/use-toast";
 
 import { initialData, rapidAPIBaseUrl, rapidAPIOptions } from "../fetch";
 import { SalaryData } from "@/types";
@@ -38,6 +39,7 @@ const estimatedSalariesSchema = z.object({
 type FormFields = z.infer<typeof estimatedSalariesSchema>;
 
 const EstimatedSalaries = () => {
+  const { toast } = useToast();
   const [data, setData] = useState<SalaryData[]>(initialData);
   const [graphJobTitle, setGraphJobTitle] = useState<string>("Web Developer");
   const [graphLocation, setGraphLocation] = useState<string>("London");
@@ -56,16 +58,31 @@ const EstimatedSalaries = () => {
   });
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    setGraphJobTitle(data.jobTitle);
-    setGraphLocation(data.location);
+    const jobTitle = data.jobTitle;
+    const location = data.location;
     const url = `${rapidAPIBaseUrl}estimated-salary?job_title=${data.jobTitle}&location=${data.location}&radius=${data.radius}`;
     try {
       const response = await fetch(url, rapidAPIOptions);
       const { data } = await response.json();
-      setData(data);
+      if (data.length > 0) {
+        setData(data);
+        setGraphJobTitle(jobTitle);
+        setGraphLocation(location);
+      } else {
+        toast({
+          title: "No data found",
+          description:
+            "Please try again with a different job title or location",
+          variant: "salariesPage",
+        });
+      }
     } catch (error) {
       setError("root", {
         message: "This is invalid",
+      });
+      toast({
+        title: "Error fetching data",
+        description: "Please try again later",
       });
     }
   };
@@ -160,7 +177,7 @@ const EstimatedSalaries = () => {
           </form>
         </section>
         <div className="bg-white_darkBG-2 flex w-full flex-col gap-2.5 rounded-ten p-5 md:p-6">
-          <p className="semibold-16 md:semibold-22 text-black_white">
+          <p className="semibold-16 md:semibold-22 text-black_white capitalize">
             Estimated Salary<span className="light-16 md:light-22"> for </span>
             {graphJobTitle}
             <span className="light-16 md:light-22"> in </span>

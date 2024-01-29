@@ -2,6 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "@/components/ui/toaster";
 
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/context/ThemeProvider";
@@ -26,6 +27,7 @@ export default function RootLayout({
         <ThemeProvider>
           <Navbar />
           {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

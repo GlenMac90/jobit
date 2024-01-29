@@ -34,7 +34,7 @@ const SimilarJobCard = ({ data }: { data: JobSummary }) => {
   const daysLeft = daysUntil(deadline);
 
   return (
-    <div className="card-styles gap-5 p-5">
+    <div className="card-styles gap-5 p-5 hover:shadow-xl">
       <div className="flex w-full justify-between">
         <div className="flex gap-4">
           <Image
@@ -67,7 +67,7 @@ const SimilarJobCard = ({ data }: { data: JobSummary }) => {
         <span className="regular-14 text-natural-6">{daysLeft}</span>
         <Link
           href={`/job-details/${jobId}`}
-          className="flex-center h-9 w-[3.7rem] rounded-[7px] bg-primary/10 text-primary"
+          className="flex-center h-9 w-[3.7rem] rounded-[7px] bg-primary/10 text-primary hover:bg-primary hover:text-white"
         >
           View
         </Link>

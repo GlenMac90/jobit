@@ -55,7 +55,7 @@ const RecentJobsList = ({ data }: { data: string }) => {
   return (
     <section className="bg-white_darkBG-2 mt-9 flex w-full flex-col rounded-ten px-4 py-5 md:px-5 md:py-7">
       <form
-        className="bg-natural-3_darkBG-3 flex w-full gap-4 rounded-2xl px-4 py-2 lg:w-1/2"
+        className="bg-natural-3_darkBG-3 flex w-full gap-4 rounded-xl px-4 py-2 lg:w-1/2"
         onSubmit={handleSubmit(onSubmit)}
       >
         <Image

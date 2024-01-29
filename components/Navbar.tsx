@@ -33,7 +33,9 @@ const Navbar = () => {
     <>
       <nav className="bg-white_darkBG-1 flex-center fixed top-0 z-50 flex h-[4.375rem] w-screen border-b-natural-5 px-6 dark:border-b-darkBG-3">
         <div className="flex size-full max-w-[80rem] items-center justify-between">
-          <JobItLogo className="hidden sm:flex" />
+          <Link href="/" className="hidden sm:flex">
+            <JobItLogo />
+          </Link>
           <div className="hidden h-full gap-[1.875rem] sm:flex">
             {navBarLinks.map((link) => {
               const isActive = pathname === link.path;
